@@ -19,3 +19,34 @@ document.querySelectorAll('.footer').forEach(footer=>{
   `;
   footer.parentNode.insertBefore(sponsor,footer);
 });
+/* FOOTER VENUE INFO */
+document.querySelectorAll('.footer').forEach(footer=>{
+  const contact=footer.querySelector('.footer-grid > div:last-child');
+
+  if(contact && !contact.querySelector('.footer-venue')){
+    const venue=document.createElement('div');
+
+    venue.className='footer-venue';
+    venue.style.cssText=
+      'margin-top:18px;padding-top:14px;border-top:1px solid #2b2b2f';
+
+    venue.innerHTML=`
+      <strong style="display:block;margin-bottom:6px;font-size:13px;color:#fff">
+        Sân sinh hoạt
+      </strong>
+
+      <span style="display:block;color:#c9c9ce;font-size:14px">
+        Sân bóng đá NOK
+      </span>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Sân+bóng+đá+NOK+Phạm+Hùng+Chánh+Hưng+TPHCM"
+        target="_blank"
+        rel="noopener">
+        Hẻm C4 Phạm Hùng, P. Chánh Hưng, TP.HCM
+      </a>
+    `;
+
+    contact.appendChild(venue);
+  }
+});
