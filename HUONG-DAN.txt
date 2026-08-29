@@ -1,11 +1,14 @@
-ROSE NEWSROOM - BẢN BẤM ĐỌC BÀI
+GÓI CẬP NHẬT CHÍNH THỨC - PRE-MATCH ROSE FC VS KFC FC
 
-Upload 5 file này vào thư mục gốc repo roseball:
-- news.html  (chọn Replace/Overwrite file cũ)
-- news-restructure-2026.html
-- news-seven-a-side-2027.html
-- news-trophy-room-2025-2026.html
-- news-road-to-vgf-2027.html
+Upload 3 file sau vào thư mục gốc repo roseball:
+1. news.html
+   - Ghi đè file news.html hiện tại.
 
-Không cần sửa styles.css.
-Sau khi Commit, Vercel sẽ tự deploy.
+2. news-prematch-rose-vs-kfc-30082026.html
+   - Bài viết mới.
+
+3. prematch-rose-vs-kfc-30082026.jpg
+   - Ảnh cover đã tối ưu dung lượng.
+
+Commit trực tiếp vào main.
+Vercel sẽ tự deploy sau khoảng 1–2 phút.
