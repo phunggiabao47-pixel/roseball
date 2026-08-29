@@ -50,3 +50,58 @@ document.querySelectorAll('.footer').forEach(footer=>{
     contact.appendChild(venue);
   }
 });
+/* CURRENT ROSE FC SQUAD */
+const roseCurrentSquad = [
+  {number:'01',name:'Lưu Gia Bảo',position:'GK'},
+  {number:'03',name:'Trần Sĩ Cao Thắng',position:'RW'},
+  {number:'04',name:'Trịnh Tùng Lâm',position:'CB'},
+  {number:'08',name:'Nguyễn Hưng',position:'GK'},
+  {number:'12',name:'Trương Đức Huy Hoàng',position:'CB'},
+  {number:'15',name:'Nguyễn Hoàng Duy',position:'ST'},
+  {number:'17',name:'Nguyễn Chí Hiếu',position:'RW'},
+  {number:'18',name:'Phạm Minh Phúc',position:'LW'},
+  {number:'20',name:'Trương Anh Khoa',position:'CF'},
+  {number:'21',name:'Nguyễn Minh Hoàng',position:'CM'},
+  {number:'27',name:'Trần Ngọc Bảo',position:'CB'},
+  {number:'28',name:'Phùng Gia Bảo',position:'CF'},
+  {number:'31',name:'Hoàng Anh',position:'CB'},
+  {number:'33',name:'Lê Gia Huy',position:'ST'},
+  {number:'46',name:'Lê Thế Duy',position:'ST'},
+  {number:'89',name:'Lê Nguyễn Phước Thiện',position:'CM'}
+];
+
+function rosePlayerCard(player){
+  return `
+    <div class="player">
+      <div class="num">${player.number}</div>
+      <h3>${player.name}</h3>
+      <span class="badge">${player.position}</span>
+    </div>
+  `;
+}
+
+/* FULL SQUAD - TEAM PAGE */
+if(path === 'team.html'){
+  const squadGrid = document.querySelector('.player-grid');
+
+  if(squadGrid){
+    squadGrid.innerHTML =
+      roseCurrentSquad.map(rosePlayerCard).join('');
+  }
+}
+
+/* FEATURED PLAYERS - HOME PAGE */
+if(path === 'index.html'){
+  const homeGrid = document.querySelector('.player-grid');
+
+  if(homeGrid){
+    const featuredNumbers = ['01','04','18','28'];
+
+    const featuredPlayers = roseCurrentSquad.filter(player =>
+      featuredNumbers.includes(player.number)
+    );
+
+    homeGrid.innerHTML =
+      featuredPlayers.map(rosePlayerCard).join('');
+  }
+}
