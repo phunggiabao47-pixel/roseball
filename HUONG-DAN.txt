@@ -1,0 +1,11 @@
+ROSE NEWSROOM - BẢN BẤM ĐỌC BÀI
+
+Upload 5 file này vào thư mục gốc repo roseball:
+- news.html  (chọn Replace/Overwrite file cũ)
+- news-restructure-2026.html
+- news-seven-a-side-2027.html
+- news-trophy-room-2025-2026.html
+- news-road-to-vgf-2027.html
+
+Không cần sửa styles.css.
+Sau khi Commit, Vercel sẽ tự deploy.
