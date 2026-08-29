@@ -1,14 +1,21 @@
-GÓI CẬP NHẬT CHÍNH THỨC - PRE-MATCH ROSE FC VS KFC FC
+ROSE FC - SPONSOR UPDATE
 
-Upload 3 file sau vào thư mục gốc repo roseball:
-1. news.html
-   - Ghi đè file news.html hiện tại.
+Bạn chỉ cần upload 3 file này vào thư mục gốc repo roseball:
 
-2. news-prematch-rose-vs-kfc-30082026.html
-   - Bài viết mới.
+1. main.js
+   -> Ghi đè main.js cũ.
 
-3. prematch-rose-vs-kfc-30082026.jpg
-   - Ảnh cover đã tối ưu dung lượng.
+2. styles.css
+   -> Ghi đè styles.css cũ.
+   -> File này đã giữ luôn phần FIX MATCH CENTRE chữ trắng.
 
-Commit trực tiếp vào main.
-Vercel sẽ tự deploy sau khoảng 1–2 phút.
+3. roseball-foundation.png
+   -> File mới.
+
+Sau đó Commit trực tiếp vào main.
+Vercel sẽ tự deploy.
+
+Kết quả:
+- Cuối mọi trang sẽ tự có mục OFFICIAL PARTNER
+- Logo Roseball Foundation nằm giữa
+- Không cần sửa từng file HTML
