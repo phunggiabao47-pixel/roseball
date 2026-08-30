@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d90416">
+<title>Rose Base 2030 | Future Vision | Rose FC</title>
+<meta name="description" content="Rose Base 2030 — tầm nhìn dài hạn của Rose Football Club về một Football & Performance Campus, hiện đang được nghiên cứu tính khả thi.">
+<link rel="icon" href="rose-fc-logo.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--rb-red:#d90416;--rb-ink:#171719;--rb-warm:#f4f1eb;--rb-cream:#faf8f4;--rb-line:#ddd7ce;--rb-muted:#77736d}
+body{background:var(--rb-cream);color:var(--rb-ink)}
+.rb-hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;background:#111}
+.rb-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rb-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,6,.16),rgba(5,5,6,.74) 78%,rgba(5,5,6,.92))}
+.rb-hero .container{position:relative;z-index:2;color:#fff;padding-bottom:70px}
+.rb-eyebrow{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#ff5c68;margin-bottom:14px}
+.rb-hero h1{font-size:clamp(58px,10vw,128px);line-height:.82;letter-spacing:-.07em;margin:0;max-width:1000px}
+.rb-hero h2{font-size:clamp(18px,2vw,27px);font-weight:650;letter-spacing:-.02em;margin:22px 0 10px}
+.rb-hero p{max-width:720px;color:#d4d4d7;line-height:1.65;margin:0}
+.rb-status{display:inline-flex;align-items:center;gap:9px;margin-top:20px;padding:9px 13px;border:1px solid rgba(255,255,255,.19);border-radius:99px;font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.06)}
+.rb-status:before{content:"";width:7px;height:7px;border-radius:50%;background:#ff4858}
+.rb-intro{padding:95px 0 84px}
+.rb-intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}
+.rb-number{font-size:11px;font-weight:900;color:var(--rb-red);letter-spacing:.18em;text-transform:uppercase}
+.rb-intro h2,.rb-section h2{font-size:clamp(42px,6vw,76px);line-height:.95;letter-spacing:-.055em;margin:10px 0 25px}
+.rb-copy{font-size:18px;line-height:1.78;color:#5d5a56;max-width:760px}
+.rb-manifesto{font-size:clamp(25px,3vw,39px);line-height:1.25;letter-spacing:-.035em;font-weight:800;margin-top:30px}
+.rb-section{padding:88px 0;border-top:1px solid var(--rb-line)}
+.rb-section.dark{background:#171719;color:#fff;border-top:0}
+.rb-section.dark .rb-copy{color:#c3c3c6}
+.rb-section-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;align-items:start;margin-bottom:42px}
+.rb-tags{font-size:11px;letter-spacing:.12em;font-weight:850;color:var(--rb-red);text-transform:uppercase;margin-top:15px}
+.rb-figure{margin:0}
+.rb-figure img{width:100%;display:block;border-radius:3px;background:#e9e5de}
+.rb-figure figcaption{font-size:12px;line-height:1.55;color:var(--rb-muted);margin-top:10px}
+.dark .rb-figure figcaption{color:#8e8e93}
+.rb-pair{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rb-stack{display:grid;gap:24px}
+.rb-wide{margin-top:22px}
+.rb-quote{padding:74px 0;background:var(--rb-warm);border-top:1px solid var(--rb-line);border-bottom:1px solid var(--rb-line)}
+.rb-quote blockquote{margin:0;font-size:clamp(30px,5vw,64px);line-height:1.05;letter-spacing:-.055em;font-weight:900;max-width:1050px}
+.rb-quote span{display:block;color:var(--rb-red);margin-top:12px}
+.rb-roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rb-line);border:1px solid var(--rb-line)}
+.rb-step{background:var(--rb-cream);padding:32px;min-height:285px}
+.rb-step small{font-size:11px;color:var(--rb-red);font-weight:900;letter-spacing:.14em}
+.rb-step h3{font-size:31px;line-height:1;letter-spacing:-.04em;margin:13px 0 16px}
+.rb-step p{color:#68645f;line-height:1.65;margin:0}
+.rb-final{position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;background:#111;color:#fff}
+.rb-final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rb-final:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.84))}
+.rb-final .container{position:relative;z-index:2;padding-bottom:68px}
+.rb-final h2{font-size:clamp(53px,9vw,112px);line-height:.86;letter-spacing:-.065em;margin:0 0 20px}
+.rb-final p{font-size:20px;line-height:1.6;max-width:690px;color:#d7d7da}
+.rb-disclaimer{padding:28px 0 46px;background:#111;color:#8f8f95;font-size:11px;line-height:1.65}
+.rb-back{display:inline-flex;align-items:center;gap:8px;margin-top:25px;color:#fff;text-decoration:none;font-weight:850;font-size:13px}
+@media(max-width:800px){
+ .rb-hero{min-height:68vh}.rb-hero .container{padding-bottom:45px}
+ .rb-intro,.rb-section{padding:64px 0}
+ .rb-intro-grid,.rb-section-head{grid-template-columns:1fr;gap:20px}
+ .rb-pair{grid-template-columns:1fr;gap:28px}
+ .rb-roadmap{grid-template-columns:1fr}
+ .rb-step{min-height:0}
+ .rb-final{min-height:63vh}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container"><span>ROSE FOOTBALL CLUB · TP.HCM</span><span>@roseball_vn</span></div></div>
+<nav class="navbar"><div class="container navwrap"><a class="brand" href="index.html"><img src="rose-fc-logo.png" alt="Rose FC"><div><strong>ROSE FC</strong><span>Roseball Vietnam</span></div></a><button class="menu-btn" aria-label="Menu">☰</button><div class="navlinks"><a href="index.html">Home</a><a href="club.html">Club</a><a href="team.html">Team</a><a href="matches.html">Matches</a><a href="stats.html">Stats</a><a href="news.html">News</a><a href="road-to-vgf.html">Road to VGF</a><a href="media.html">Media</a><a href="store.html">Store</a><a class="nav-cta" href="join.html">Join Us</a></div></div></nav>
+
+<header class="rb-hero">
+  <img src="rose-base-01.webp" alt="Concept tổng thể Rose Base 2030">
+  <div class="container">
+    <div class="rb-eyebrow">Future Vision · Feasibility Study</div>
+    <h1>ROSE BASE<br>2030</h1>
+    <h2>The Future Home of Rose Football Club</h2>
+    <p>Một tầm nhìn dài hạn nhằm nghiên cứu khả năng nâng cấp khu sân NOK hiện hữu thành Football & Performance Campus phục vụ bóng đá, cầu thủ và hoạt động của Rose FC.</p>
+    <div class="rb-status">Concept under feasibility study</div>
+  </div>
+</header>
+
+<section class="rb-intro">
+  <div class="container rb-intro-grid">
+    <div><div class="rb-number">The Vision</div><h2>From a place to play.<br>To a place to belong.</h2></div>
+    <div>
+      <div class="rb-copy">Rose FC đang nghiên cứu một tầm nhìn dài hạn cho cơ sở vật chất của CLB: từng bước nâng cấp khu sân NOK hiện hữu thành một môi trường nơi cầu thủ có thể tập luyện, phục hồi, sinh hoạt, học hỏi và cùng nhau trưởng thành.</div>
+      <div class="rb-copy" style="margin-top:18px">Rose Base 2030 hiện chưa phải một dự án đã được quyết định triển khai. Các phương án đang được đánh giá về tính khả thi, nguồn lực, quy mô đầu tư, nhu cầu vận hành và điều kiện thực tế. Trong ít nhất 2–3 năm tới, nếu nguồn lực cho phép, tầm nhìn này có thể từng bước trở thành khả thi.</div>
+      <div class="rb-manifesto">Không phải một lời hứa về công trình.<br><span style="color:#d90416">Đây là một định hướng cho tương lai.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="rb-section">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">01 · The Campus</div><h2>A home built around football.</h2></div>
+   <div><div class="rb-copy">Khu sân NOK hiện hữu được nghiên cứu nâng cấp theo hướng giữ bóng đá làm trung tâm, đồng thời bổ sung các không gian chức năng phục vụ tập luyện, sinh hoạt, lưu trú và vận hành CLB.</div><div class="rb-tags">Football · Performance · Living · Club HQ</div></div>
+  </div>
+  <div class="rb-pair">
+   <figure class="rb-figure"><img src="rose-base-01.webp" alt="Tổng thể Rose Base 2030"><figcaption>Concept tổng thể Rose Base 2030 — định hướng nâng cấp khu sân NOK hiện hữu thành đại bản doanh bóng đá của Rose FC.</figcaption></figure>
+   <figure class="rb-figure"><img src="rose-base-02.webp" loading="lazy" alt="Khu nhà chức năng Rose Base 2030"><figcaption>Concept khu nhà chức năng bên sân — kết nối trực tiếp không gian bóng đá với khu tập luyện, sinh hoạt và lưu trú.</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="rb-section dark">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">02 · Football</div><h2>Train.<br>Play.<br>Develop.</h2></div>
+   <div><div class="rb-copy">Bóng đá vẫn là trung tâm của toàn bộ dự án. Không gian được nghiên cứu để cầu thủ có thể bước từ khu chức năng trực tiếp ra sân tập, tạo cảm giác của một training ground thực sự.</div></div>
+  </div>
+  <div class="rb-stack">
+   <figure class="rb-figure"><img src="rose-base-03.webp" loading="lazy" alt="Không gian tiếp đón và sinh hoạt bên sân"><figcaption>Concept không gian tiếp đón và sinh hoạt bên sân — điểm kết nối giữa cầu thủ, CLB và hoạt động bóng đá hằng ngày.</figcaption></figure>
+   <div class="rb-pair">
+    <figure class="rb-figure"><img src="rose-base-04.webp" loading="lazy" alt="Phòng thay đồ cầu thủ"><figcaption>Concept phòng thay đồ cầu thủ — không gian chuẩn bị trước và sau các buổi tập, trận đấu.</figcaption></figure>
+    <figure class="rb-figure"><img src="rose-base-05.webp" loading="lazy" alt="Phòng họp và phân tích chuyên môn"><figcaption>Concept phòng họp và phân tích chuyên môn với tầm nhìn trực tiếp ra sân tập.</figcaption></figure>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="rb-section">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">03 · Performance</div><h2>Build better players.</h2></div>
+   <div><div class="rb-copy">Mục tiêu không chỉ là tạo thêm không gian, mà là xây dựng một hệ thống hỗ trợ phát triển cầu thủ tốt hơn — từ sức mạnh, thể lực đến phục hồi và chăm sóc y học thể thao.</div><div class="rb-tags">Strength · Conditioning · Recovery · Medical · Analysis</div></div>
+  </div>
+  <div class="rb-pair">
+   <figure class="rb-figure"><img src="rose-base-06.webp" loading="lazy" alt="Khu y học thể thao và phục hồi"><figcaption>Concept khu y học thể thao và phục hồi — hỗ trợ chăm sóc, vật lý trị liệu và phục hồi sau vận động.</figcaption></figure>
+   <figure class="rb-figure"><img src="rose-base-07.webp" loading="lazy" alt="Khu gym và performance training"><figcaption>Concept khu gym và performance training — phục vụ phát triển sức mạnh, tốc độ và thể lực cầu thủ.</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="rb-quote">
+ <div class="container">
+  <blockquote>TRAIN TOGETHER.<br>LIVE TOGETHER.<br><span>GROW TOGETHER.</span></blockquote>
+ </div>
+</section>
+
+<section class="rb-section">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">04 · Living</div><h2>Life beyond the pitch.</h2></div>
+   <div><div class="rb-copy">Khu lưu trú được nghiên cứu nhằm phục vụ các giai đoạn tập trung, tập huấn hoặc hoạt động dài ngày. Không gian ưu tiên sự đơn giản, hiện đại, nghỉ ngơi và kỷ luật sinh hoạt của cầu thủ.</div></div>
+  </div>
+  <figure class="rb-figure"><img src="rose-base-08.webp" loading="lazy" alt="Phòng lưu trú cầu thủ"><figcaption>Concept phòng lưu trú cầu thủ — không gian nghỉ ngơi, học tập và sinh hoạt trong các giai đoạn tập trung.</figcaption></figure>
+ </div>
+</section>
+
+<section class="rb-section dark">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">05 · Club Life</div><h2>More than training.</h2></div>
+   <div><div class="rb-copy">Một CLB không chỉ tồn tại trong 90 phút trên sân. Rose Base hướng tới những không gian nơi cầu thủ có thể ăn uống, nghỉ ngơi, trao đổi và dành thời gian cùng đồng đội — nơi văn hóa CLB được hình thành từ những hoạt động thường ngày.</div></div>
+  </div>
+  <figure class="rb-figure"><img src="rose-base-09.webp" loading="lazy" alt="Khu sinh hoạt và ăn uống chung"><figcaption>Concept khu sinh hoạt và ăn uống chung — không gian dành cho đời sống tập thể bên ngoài sân bóng.</figcaption></figure>
+ </div>
+</section>
+
+<section class="rb-section">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">06 · Matchday & Daily Life</div><h2>A place that lives with football.</h2></div>
+   <div><div class="rb-copy">Rose Base được hình dung không phải như một khu phức hợp tách biệt khỏi bóng đá. Ban ngày là tập luyện; buổi tối là trận đấu, sinh hoạt và hoạt động cộng đồng. Sân bóng và cơ sở chức năng cùng tồn tại như một thể thống nhất.</div></div>
+  </div>
+  <figure class="rb-figure"><img src="rose-base-10.webp" loading="lazy" alt="Rose Base vào buổi tối"><figcaption>Concept Rose Base vào buổi tối — sân bóng và khu chức năng cùng vận hành như một phần đời sống thường nhật của CLB.</figcaption></figure>
+ </div>
+</section>
+
+<section class="rb-section">
+ <div class="container">
+  <div class="rb-section-head">
+   <div><div class="rb-number">The Journey</div><h2>Build the club before building the home.</h2></div>
+   <div><div class="rb-copy">Cơ sở vật chất chỉ có ý nghĩa khi phía sau nó là một CLB đủ khả năng vận hành. Vì vậy, Rose FC ưu tiên xây nền tảng con người, tổ chức và nguồn lực trước.</div></div>
+  </div>
+  <div class="rb-roadmap">
+   <div class="rb-step"><small>2026 — 2027</small><h3>BUILD THE CLUB</h3><p>Ổn định đội hình, văn hóa, hệ thống vận hành, kỷ luật, tài chính và năng lực tổ chức.</p></div>
+   <div class="rb-step"><small>2027 — 2028</small><h3>GROW THE CLUB</h3><p>Phát triển quy mô hoạt động, chất lượng thi đấu và tiếp tục nghiên cứu quy hoạch, thiết kế, chi phí cùng mô hình vận hành Rose Base.</p></div>
+   <div class="rb-step"><small>2029 — 2030</small><h3>BUILD THE HOME</h3><p>Nếu điều kiện nguồn lực và tính khả thi cho phép, từng bước triển khai các hạng mục mang lại giá trị trực tiếp nhất cho cầu thủ và CLB.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="rb-section" style="background:#f4f1eb">
+ <div class="container rb-intro-grid">
+  <div><div class="rb-number">A Realistic Vision</div><h2>Built to work.<br>Not to impress.</h2></div>
+  <div>
+   <div class="rb-copy">Rose FC không xem Rose Base 2030 là một bản vẽ đẹp để nói về tương lai. Dự án chỉ có ý nghĩa nếu nó có thể xây dựng được, vận hành được và tạo ra giá trị thực sự cho CLB.</div>
+   <div class="rb-copy" style="margin-top:18px">Thiết kế, quy mô, vị trí các hạng mục và thời gian triển khai có thể tiếp tục thay đổi trong quá trình nghiên cứu. Nhưng mục tiêu cốt lõi không thay đổi: <strong>tạo ra một môi trường tốt hơn cho thế hệ cầu thủ tiếp theo của Rose FC.</strong></div>
+  </div>
+ </div>
+</section>
+
+<section class="rb-final">
+ <img src="rose-base-02.webp" loading="lazy" alt="Tương lai Rose Base 2030">
+ <div class="container">
+  <div class="rb-eyebrow">Built for the next generation</div>
+  <h2>THIS IS<br>OUR HOME.</h2>
+  <p>Một nơi để chơi bóng. Một nơi để trưởng thành. Một nơi để thuộc về.</p>
+  <a class="rb-back" href="road-to-vgf.html">← Back to Road to VGF</a>
+ </div>
+</section>
+
+<div class="rb-disclaimer"><div class="container">Rose Base 2030 is a long-term vision currently under feasibility study by Rose Football Club. All concepts, facilities, development scope and timelines are indicative and may evolve subject to resources, operational requirements, legal conditions and practical feasibility.</div></div>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-brand"><img src="rose-fc-logo.png" alt="Rose FC"><strong>ROSE FC</strong></div><p style="color:#aaa;max-width:340px">Chơi bằng đam mê. Gắn kết bằng trách nhiệm. Nền tảng số chính thức của Rose Football Club.</p></div><div><h4>CLB</h4><a href="club.html">Giới thiệu</a><a href="team.html">Đội hình</a><a href="matches.html">Trận đấu</a><a href="stats.html">Thống kê</a></div><div><h4>Nội dung</h4><a href="news.html">Tin tức</a><a href="road-to-vgf.html">Road to VGF</a><a href="rose-base-2030.html">Future Vision</a><a href="media.html">Media</a><a href="store.html">Rose Authentic</a></div><div><h4>Liên hệ</h4><a href="mailto:rosefootballclub2025@gmail.com">rosefootballclub2025@gmail.com</a><a href="tel:0792201033">Zalo: 0792201033</a><a href="#">Facebook: Rose Football Club</a><a href="#">Instagram: @roseball_vn</a></div></div><div class="footer-bottom"><span>© 2026 Rose Football Club. All rights reserved.</span><span>Powered by Roseball</span></div></div></footer>
+<script src="main.js"></script>
+</body></html>
