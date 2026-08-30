@@ -55,7 +55,112 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b)
 document.getElementById('addCart').onclick=()=>{const q=Math.max(1,Math.min(10,+document.getElementById('oQty').value||1));cart.push({id:Date.now(),name:current.name,price:current.price,size:document.getElementById('oSize').value,shirtName:document.getElementById('oName').value.trim(),shirtNumber:document.getElementById('oNum').value.trim(),qty:q,note:document.getElementById('oNote').value.trim()});save();pm.classList.remove('open');cd.classList.add('open')};
 function render(){document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0);document.getElementById('cartItems').innerHTML=cart.length?cart.map(x=>`<div class="cart-item"><div class="cart-top"><div><h4>${x.name} × ${x.qty}</h4><p>Size: ${x.size}${x.shirtName?' · Tên: '+x.shirtName:''}${x.shirtNumber?' · Số: '+x.shirtNumber:''}</p>${x.note?'<p>Ghi chú: '+x.note+'</p>':''}<strong>${money(x.price*x.qty)}</strong></div><button class="remove" onclick="removeItem(${x.id})">Xóa</button></div></div>`).join(''):'<p style="color:#777">Chưa có sản phẩm trong giỏ hàng.</p>';document.getElementById('cartTotal').textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0))}
 window.removeItem=id=>{cart=cart.filter(x=>x.id!==id);save()};document.getElementById('openCart').onclick=()=>cd.classList.add('open');
-document.getElementById('createOrder').onclick=()=>{if(!cart.length)return alert('Giỏ hàng đang trống.');const n=document.getElementById('buyerName').value.trim(),c=document.getElementById('buyerContact').value.trim(),a=document.getElementById('buyerAddress').value.trim();if(!n||!c||!a)return alert('Vui lòng nhập họ tên, SĐT/Zalo và địa chỉ nhận hàng.');const code='ROSE-'+new Date().toISOString().slice(2,10).replaceAll('-','')+'-'+String(Math.floor(Math.random()*900)+100),lines=['ROSE AUTHENTIC STORE','MÃ ĐƠN: '+code,'','Người đặt: '+n,'Liên hệ: '+c,'Địa chỉ nhận hàng: '+a,'Loại: '+document.getElementById('buyerType').value,'','SẢN PHẨM:'];cart.forEach((x,i)=>{lines.push(`${i+1}. ${x.name} × ${x.qty}`);lines.push(`   Size: ${x.size}${x.shirtName?' | Tên: '+x.shirtName:''}${x.shirtNumber?' | Số: '+x.shirtNumber:''}`);if(x.note)lines.push('   Ghi chú: '+x.note);lines.push('   Thành tiền: '+money(x.price*x.qty))});lines.push('','TỔNG CỘNG: '+money(cart.reduce((s,x)=>s+x.price*x.qty,0)),'','Đơn chỉ được xác nhận sau khi Rose FC phản hồi.');const t=lines.join('\n');document.getElementById('orderOutput').textContent=t;document.getElementById('orderOutput').style.display='block';document.getElementById('orderActions').style.display='grid';document.getElementById('emailOrder').href='mailto:rosefootballclub2025@gmail.com?subject='+encodeURIComponent('Đặt hàng Rose Authentic - '+code)+'&body='+encodeURIComponent(t)};
+const ROSE_ORDERS_API='https://script.google.com/macros/s/AKfycbwYzQsgtqowOwnGCOuTdru6LIGhcqrqZjKlUcX1MKml-4t8bckuN-8DvUg04wHumeOL/exec';
+
+document.getElementById('createOrder').onclick=async()=>{
+  if(!cart.length)return alert('Giỏ hàng đang trống.');
+
+  const n=document.getElementById('buyerName').value.trim();
+  const c=document.getElementById('buyerContact').value.trim();
+  const a=document.getElementById('buyerAddress').value.trim();
+  const buyerType=document.getElementById('buyerType').value;
+
+  if(!n||!c||!a)return alert('Vui lòng nhập họ tên, SĐT/Zalo và địa chỉ nhận hàng.');
+
+  const btn=document.getElementById('createOrder');
+  btn.disabled=true;
+  btn.textContent='ĐANG GỬI ĐƠN...';
+
+  const now=new Date();
+  const yy=String(now.getFullYear()).slice(-2);
+  const mm=String(now.getMonth()+1).padStart(2,'0');
+  const dd=String(now.getDate()).padStart(2,'0');
+  const code=`ROSE-${yy}${mm}${dd}-${String(Math.floor(Math.random()*900)+100)}`;
+  const paymentCode=code.replaceAll('-','');
+  const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+
+  const payload={
+    orderCode:code,
+    paymentCode:paymentCode,
+    buyerName:n,
+    contact:c,
+    address:a,
+    buyerType:buyerType,
+    total:total,
+    items:cart.map(x=>({
+      name:x.name,
+      qty:x.qty,
+      size:x.size,
+      shirtName:x.shirtName||'',
+      shirtNumber:x.shirtNumber||'',
+      note:x.note||'',
+      price:x.price
+    }))
+  };
+
+  const lines=[
+    'ROSE AUTHENTIC STORE',
+    'MÃ ĐƠN: '+code,
+    'MÃ THANH TOÁN: '+paymentCode,
+    '',
+    'Người đặt: '+n,
+    'Liên hệ: '+c,
+    'Địa chỉ nhận hàng: '+a,
+    'Loại: '+buyerType,
+    '',
+    'SẢN PHẨM:'
+  ];
+
+  cart.forEach((x,i)=>{
+    lines.push(`${i+1}. ${x.name} × ${x.qty}`);
+    lines.push(`   Size: ${x.size}${x.shirtName?' | Tên: '+x.shirtName:''}${x.shirtNumber?' | Số: '+x.shirtNumber:''}`);
+    if(x.note)lines.push('   Ghi chú: '+x.note);
+    lines.push('   Thành tiền: '+money(x.price*x.qty));
+  });
+
+  lines.push(
+    '',
+    'TỔNG CỘNG: '+money(total),
+    'NỘI DUNG CHUYỂN KHOẢN: '+paymentCode,
+    '',
+    'Đơn đã được gửi đến Rose FC.',
+    'Rose FC sẽ xác nhận đơn và trạng thái thanh toán.'
+  );
+
+  const orderText=lines.join('\n');
+
+  try{
+    await fetch(ROSE_ORDERS_API,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
+    });
+
+    document.getElementById('orderOutput').textContent='✓ ĐẶT HÀNG THÀNH CÔNG\n\n'+orderText;
+    document.getElementById('orderOutput').style.display='block';
+    document.getElementById('orderActions').style.display='grid';
+    document.getElementById('emailOrder').href=
+      'mailto:rosefootballclub2025@gmail.com?subject='+
+      encodeURIComponent('Đặt hàng Rose Authentic - '+code)+
+      '&body='+encodeURIComponent(orderText);
+
+    cart=[];
+    save();
+    btn.textContent='ĐÃ GỬI ĐƠN ✓';
+
+    setTimeout(()=>{
+      btn.disabled=false;
+      btn.textContent='TẠO ĐƠN ĐẶT HÀNG';
+    },2500);
+
+  }catch(err){
+    console.error(err);
+    alert('Chưa gửi được đơn. Vui lòng kiểm tra kết nối mạng và thử lại.');
+    btn.disabled=false;
+    btn.textContent='TẠO ĐƠN ĐẶT HÀNG';
+  }
+};
 document.getElementById('copyOrder').onclick=async()=>{try{await navigator.clipboard.writeText(document.getElementById('orderOutput').textContent);alert('Đã sao chép đơn hàng.')}catch{alert('Hãy nhấn giữ phần đơn hàng để sao chép.')}};
 render();
 </script></body></html>
