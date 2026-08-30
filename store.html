@@ -30,6 +30,20 @@
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin:12px 0}.field label{display:block;font-size:12px;font-weight:850;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;box-sizing:border-box;min-height:46px;border:1px solid #d7d7da;border-radius:11px;padding:10px 12px;font:inherit;background:#fff}.field textarea{min-height:82px;resize:vertical}
 .add{width:100%;min-height:50px;border:0;border-radius:12px;background:var(--r);color:#fff;font-weight:900;margin-top:8px;cursor:pointer}.small{font-size:12px;line-height:1.55;color:#777}
 .drawer{position:absolute;top:0;right:0;width:min(480px,94vw);height:100%;overflow:auto;background:#fff;padding:26px;box-sizing:border-box;box-shadow:-10px 0 40px rgba(0,0,0,.25)}.drawer h2{font-size:36px;margin:0 0 20px}.cart-item{border-bottom:1px solid #eee;padding:15px 0}.cart-top{display:flex;justify-content:space-between;gap:14px}.cart-item h4{margin:0 0 5px}.cart-item p{margin:3px 0;color:#777;font-size:13px;line-height:1.45}.remove{border:0;background:none;color:#c40013;font-weight:800;padding:0;cursor:pointer}.total{display:flex;justify-content:space-between;font-size:22px;font-weight:950;padding:20px 0}.checkout{background:#f6f6f7;border-radius:16px;padding:16px}.checkout-btn{width:100%;min-height:50px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:900;cursor:pointer}.output{display:none;margin-top:16px;border:1px solid #ddd;border-radius:14px;padding:14px;background:#fff;white-space:pre-wrap;font-size:13px;line-height:1.6}.actions{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.actions button,.actions a{min-height:44px;display:grid;place-items:center;border:0;border-radius:10px;font-weight:850;text-decoration:none;cursor:pointer}.copy{background:#eee;color:#111}.email{background:var(--r);color:#fff}
+
+.payment-box{display:none;margin-top:18px;border:1px solid #e3e3e6;border-radius:18px;background:#fff;padding:18px;text-align:center}
+.payment-box.show{display:block}
+.payment-success{display:inline-block;background:#eaf8ee;color:#137333;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:900;letter-spacing:.08em}
+.payment-box h3{font-size:25px;margin:12px 0 5px}
+.payment-box .payment-sub{font-size:13px;color:#777;line-height:1.55;margin:0 0 14px}
+.payment-qr{display:block;width:min(100%,330px);height:auto;margin:0 auto 14px;border-radius:14px;border:1px solid #eee;background:#fff}
+.payment-details{display:grid;gap:8px;text-align:left;background:#f7f7f8;border-radius:13px;padding:13px;margin-top:12px}
+.payment-line{display:flex;justify-content:space-between;gap:18px;font-size:13px}
+.payment-line span{color:#777}.payment-line strong{text-align:right}
+.payment-code{font-size:16px!important;color:#111!important;letter-spacing:.04em}
+.payment-copy{width:100%;min-height:44px;border:0;border-radius:11px;background:#111;color:#fff;font-weight:900;margin-top:12px;cursor:pointer}
+.payment-note{font-size:12px;color:#777;line-height:1.55;margin:12px 0 0}
+
 @media(max-width:900px){.store-hero-grid{grid-template-columns:1fr;gap:30px}.store-badges{grid-template-columns:1fr}.shop-grid{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}.modal-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.store-hero{padding:62px 0}.shop-grid{grid-template-columns:1fr}.toolbar{align-items:start;flex-direction:column}.row{grid-template-columns:1fr}.modal{padding:20px}}
 </style></head><body>
@@ -40,7 +54,21 @@
 <div class="info-grid"><div class="info"><div class="sk">Fit Guide</div><h3>Bảng size</h3><p>Chọn size theo chiều cao và cân nặng. Nếu nằm giữa hai size hoặc thích form rộng hơn, nên ưu tiên size lớn hơn.</p><img class="size-img" src="store-size-chart.jpg" alt="Bảng size Rose FC"></div>
 <div class="info"><div class="sk">Product Notes</div><h3>Thông tin sản phẩm</h3><ul><li>Chất liệu: <strong>vải mè tổ ong cao cấp</strong>, thấm hút cao và phù hợp vận động.</li><li>Chuẩn <strong>Player Edition</strong> dành cho cầu thủ.</li><li>Có thể nhập tên và số áo khi đặt hàng.</li><li>Vui lòng kiểm tra kỹ size trước khi gửi đơn.</li><li>Đơn chỉ được xác nhận khi Rose FC phản hồi.</li><li>Thương hiệu sản xuất chính thức: <strong>Demenino Sport</strong>.</li></ul><div class="disclaimer"><strong>Thương hiệu sản xuất chính thức:</strong> Demenino Sport là thương hiệu sản xuất chính thức cho bộ sưu tập áo đấu hiện tại của Rose FC. Hình ảnh trên Store được cập nhật theo phiên bản mới nhất.</div></div></div></div></section>
 <div class="overlay" id="productModal"><div class="backdrop" data-close-product></div><div class="modal"><button class="close" data-close-product>×</button><div class="modal-grid"><div><img class="modal-img" id="mImg"><img class="modal-img" id="mImg2" style="margin-top:12px;display:none"></div><div><div class="shop-meta" id="mMeta"></div><h2 class="modal-title" id="mTitle"></h2><div class="modal-price" id="mPrice"></div><p class="shop-desc" id="mDesc" style="min-height:0"></p><div class="field"><label>SIZE</label><select id="oSize"><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></div><div class="row"><div class="field"><label>TÊN IN ÁO</label><input id="oName" maxlength="18" placeholder="VD: GIA BAO"></div><div class="field"><label>SỐ ÁO</label><input id="oNum" maxlength="2" inputmode="numeric" placeholder="VD: 28"></div></div><div class="field"><label>SỐ LƯỢNG</label><input id="oQty" type="number" min="1" max="10" value="1"></div><div class="field"><label>GHI CHÚ</label><textarea id="oNote" placeholder="Yêu cầu thêm nếu có"></textarea></div><p class="small">Tên và số áo sẽ được Rose FC kiểm tra lại trước khi chốt sản xuất.</p><button class="add" id="addCart">THÊM VÀO GIỎ</button></div></div></div></div>
-<div class="overlay" id="cartDrawer"><div class="backdrop" data-close-cart></div><div class="drawer"><button class="close" data-close-cart>×</button><div class="sk">Rose Authentic</div><h2>Giỏ hàng</h2><div id="cartItems"></div><div class="total"><span>Tổng cộng</span><span id="cartTotal">0đ</span></div><div class="checkout"><div class="field"><label>HỌ VÀ TÊN NGƯỜI ĐẶT</label><input id="buyerName"></div><div class="field"><label>SĐT / ZALO</label><input id="buyerContact"></div><div class="field"><label>ĐỊA CHỈ NHẬN HÀNG</label><textarea id="buyerAddress" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"></textarea></div><div class="field"><label>LOẠI KHÁCH HÀNG</label><select id="buyerType"><option>Thành viên Rose FC</option><option>Khách ngoài CLB</option></select></div><button class="checkout-btn" id="createOrder">TẠO ĐƠN ĐẶT HÀNG</button><div class="output" id="orderOutput"></div><div class="actions" id="orderActions"><button class="copy" id="copyOrder">SAO CHÉP ĐƠN</button><a class="email" id="emailOrder">GỬI QUA EMAIL</a></div></div></div></div>
+<div class="overlay" id="cartDrawer"><div class="backdrop" data-close-cart></div><div class="drawer"><button class="close" data-close-cart>×</button><div class="sk">Rose Authentic</div><h2>Giỏ hàng</h2><div id="cartItems"></div><div class="total"><span>Tổng cộng</span><span id="cartTotal">0đ</span></div><div class="checkout"><div class="field"><label>HỌ VÀ TÊN NGƯỜI ĐẶT</label><input id="buyerName"></div><div class="field"><label>SĐT / ZALO</label><input id="buyerContact"></div><div class="field"><label>ĐỊA CHỈ NHẬN HÀNG</label><textarea id="buyerAddress" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"></textarea></div><div class="field"><label>LOẠI KHÁCH HÀNG</label><select id="buyerType"><option>Thành viên Rose FC</option><option>Khách ngoài CLB</option></select></div><button class="checkout-btn" id="createOrder">TẠO ĐƠN ĐẶT HÀNG</button><div class="output" id="orderOutput"></div><div class="actions" id="orderActions"><button class="copy" id="copyOrder">SAO CHÉP ĐƠN</button><a class="email" id="emailOrder">GỬI QUA EMAIL</a></div><div class="payment-box" id="paymentBox">
+  <div class="payment-success">PAYMENT · VIETQR</div>
+  <h3>Thanh toán đơn hàng</h3>
+  <p class="payment-sub">Quét mã bằng ứng dụng ngân hàng. QR được tạo theo đúng tổng tiền và nội dung chuyển khoản của đơn.</p>
+  <img class="payment-qr" id="paymentQr" alt="VietQR thanh toán Rose FC">
+  <div class="payment-details">
+    <div class="payment-line"><span>Ngân hàng</span><strong>MB Bank</strong></div>
+    <div class="payment-line"><span>Chủ tài khoản</span><strong>PHUNG GIA BAO</strong></div>
+    <div class="payment-line"><span>Số tài khoản</span><strong>0792201033</strong></div>
+    <div class="payment-line"><span>Số tiền</span><strong id="paymentAmount">0đ</strong></div>
+    <div class="payment-line"><span>Nội dung CK</span><strong class="payment-code" id="paymentContent"></strong></div>
+  </div>
+  <button class="payment-copy" id="copyPayment">SAO CHÉP NỘI DUNG CHUYỂN KHOẢN</button>
+  <p class="payment-note">Sau khi chuyển khoản, trạng thái trong hệ thống vẫn là “Chờ thanh toán” cho đến khi Rose FC kiểm tra và xác nhận.</p>
+</div></div></div></div>
 <footer class="footer"><div class="container"><div class="footer-grid"><div><div class="footer-brand"><img src="rose-fc-logo.png"><strong>ROSE FC</strong></div><p style="color:#aaa;max-width:340px">Chơi bằng đam mê. Gắn kết bằng trách nhiệm. Nền tảng số chính thức của Rose Football Club.</p></div><div><h4>CLB</h4><a href="club.html">Giới thiệu</a><a href="team.html">Đội hình</a><a href="matches.html">Trận đấu</a><a href="stats.html">Thống kê</a></div><div><h4>Nội dung</h4><a href="news.html">Tin tức</a><a href="road-to-vgf.html">Road to VGF</a><a href="media.html">Media</a><a href="store.html">Rose Authentic</a></div><div><h4>Liên hệ</h4><a href="mailto:rosefootballclub2025@gmail.com">rosefootballclub2025@gmail.com</a><a href="tel:0792201033">Zalo: 0792201033</a><a href="#">Facebook: Rose Football Club</a><a href="#">Instagram: @roseball_vn</a></div></div><div class="footer-bottom"><span>© 2026 Rose Football Club. All rights reserved.</span><span>Powered by Roseball</span></div></div></footer>
 <script src="main.js"></script>
 <script>
@@ -56,6 +84,10 @@ document.getElementById('addCart').onclick=()=>{const q=Math.max(1,Math.min(10,+
 function render(){document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0);document.getElementById('cartItems').innerHTML=cart.length?cart.map(x=>`<div class="cart-item"><div class="cart-top"><div><h4>${x.name} × ${x.qty}</h4><p>Size: ${x.size}${x.shirtName?' · Tên: '+x.shirtName:''}${x.shirtNumber?' · Số: '+x.shirtNumber:''}</p>${x.note?'<p>Ghi chú: '+x.note+'</p>':''}<strong>${money(x.price*x.qty)}</strong></div><button class="remove" onclick="removeItem(${x.id})">Xóa</button></div></div>`).join(''):'<p style="color:#777">Chưa có sản phẩm trong giỏ hàng.</p>';document.getElementById('cartTotal').textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0))}
 window.removeItem=id=>{cart=cart.filter(x=>x.id!==id);save()};document.getElementById('openCart').onclick=()=>cd.classList.add('open');
 const ROSE_ORDERS_API='https://script.google.com/macros/s/AKfycbwYzQsgtqowOwnGCOuTdru6LIGhcqrqZjKlUcX1MKml-4t8bckuN-8DvUg04wHumeOL/exec';
+const ROSE_PAYMENT_BANK_ID='970422';
+const ROSE_PAYMENT_ACCOUNT='0792201033';
+const ROSE_PAYMENT_NAME='PHUNG GIA BAO';
+
 
 document.getElementById('createOrder').onclick=async()=>{
   if(!cart.length)return alert('Giỏ hàng đang trống.');
@@ -145,6 +177,17 @@ document.getElementById('createOrder').onclick=async()=>{
       encodeURIComponent('Đặt hàng Rose Authentic - '+code)+
       '&body='+encodeURIComponent(orderText);
 
+    const qrUrl='https://img.vietqr.io/image/'+
+      ROSE_PAYMENT_BANK_ID+'-'+ROSE_PAYMENT_ACCOUNT+
+      '-compact2.jpg?amount='+encodeURIComponent(total)+
+      '&addInfo='+encodeURIComponent(paymentCode)+
+      '&accountName='+encodeURIComponent(ROSE_PAYMENT_NAME);
+
+    document.getElementById('paymentQr').src=qrUrl;
+    document.getElementById('paymentAmount').textContent=money(total);
+    document.getElementById('paymentContent').textContent=paymentCode;
+    document.getElementById('paymentBox').classList.add('show');
+
     cart=[];
     save();
     btn.textContent='ĐÃ GỬI ĐƠN ✓';
@@ -162,5 +205,6 @@ document.getElementById('createOrder').onclick=async()=>{
   }
 };
 document.getElementById('copyOrder').onclick=async()=>{try{await navigator.clipboard.writeText(document.getElementById('orderOutput').textContent);alert('Đã sao chép đơn hàng.')}catch{alert('Hãy nhấn giữ phần đơn hàng để sao chép.')}};
+document.getElementById('copyPayment').onclick=async()=>{const v=document.getElementById('paymentContent').textContent;try{await navigator.clipboard.writeText(v);alert('Đã sao chép nội dung chuyển khoản: '+v)}catch{alert('Nội dung chuyển khoản: '+v)}};
 render();
 </script></body></html>
