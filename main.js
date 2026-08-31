@@ -19,6 +19,24 @@ document.querySelectorAll('.footer').forEach(footer=>{
   `;
   footer.parentNode.insertBefore(sponsor,footer);
 });
+
+/* SOCIAL LINKS */
+document.querySelectorAll('.footer a').forEach(link=>{
+  const text=(link.textContent||'').trim();
+
+  if(text.includes('Facebook: Rose Football Club')){
+    link.href='https://www.facebook.com/share/1EfpB9r8fY/?mibextid=wwXIfr';
+    link.target='_blank';
+    link.rel='noopener noreferrer';
+  }
+
+  if(text.includes('Instagram: @roseball_vn')){
+    link.href='https://www.instagram.com/roseball_vn/';
+    link.target='_blank';
+    link.rel='noopener noreferrer';
+  }
+});
+
 /* FOOTER VENUE INFO */
 document.querySelectorAll('.footer').forEach(footer=>{
   const contact=footer.querySelector('.footer-grid > div:last-child');
@@ -50,6 +68,7 @@ document.querySelectorAll('.footer').forEach(footer=>{
     contact.appendChild(venue);
   }
 });
+
 /* CURRENT ROSE FC SQUAD */
 const roseCurrentSquad = [
   {number:'01',name:'Lưu Gia Bảo',position:'GK'},
