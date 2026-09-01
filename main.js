@@ -1,5 +1,63 @@
 const menu=document.querySelector('.menu-btn');const links=document.querySelector('.navlinks');if(menu&&links){menu.addEventListener('click',()=>links.classList.toggle('open'));}
 const path=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.navlinks a').forEach(a=>{const href=a.getAttribute('href');if(href===path)a.classList.add('active');});
+
+/* TOPBAR CLEANUP */
+const roseTopbar=document.querySelector('.topbar .container');
+if(roseTopbar){
+  const topbarItems=roseTopbar.querySelectorAll('span');
+
+  if(topbarItems[0]){
+    topbarItems[0].textContent='ROSE FOOTBALL CLUB · TP.HCM';
+    topbarItems[0].style.whiteSpace='nowrap';
+  }
+
+  if(topbarItems[1]){
+    topbarItems[1].textContent='@roseball_vn';
+    topbarItems[1].style.whiteSpace='nowrap';
+  }
+
+  const syncRoseTopbar=()=>{
+    if(window.innerWidth<=640){
+      roseTopbar.style.display='flex';
+      roseTopbar.style.alignItems='center';
+      roseTopbar.style.justifyContent='center';
+      roseTopbar.style.padding='7px 0';
+      roseTopbar.style.minHeight='32px';
+
+      if(topbarItems[0]){
+        topbarItems[0].style.fontSize='11px';
+        topbarItems[0].style.fontWeight='800';
+        topbarItems[0].style.letterSpacing='.055em';
+        topbarItems[0].style.textAlign='center';
+      }
+
+      if(topbarItems[1]){
+        topbarItems[1].style.display='none';
+      }
+    }else{
+      roseTopbar.style.display='flex';
+      roseTopbar.style.alignItems='center';
+      roseTopbar.style.justifyContent='space-between';
+      roseTopbar.style.padding='8px 0';
+      roseTopbar.style.minHeight='auto';
+
+      if(topbarItems[0]){
+        topbarItems[0].style.fontSize='';
+        topbarItems[0].style.fontWeight='';
+        topbarItems[0].style.letterSpacing='';
+        topbarItems[0].style.textAlign='';
+      }
+
+      if(topbarItems[1]){
+        topbarItems[1].style.display='';
+      }
+    }
+  };
+
+  syncRoseTopbar();
+  window.addEventListener('resize',syncRoseTopbar);
+}
+
 const joinForm=document.querySelector('#joinForm');if(joinForm){joinForm.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(joinForm);const subject=encodeURIComponent('Ứng tuyển Rose FC - '+(f.get('name')||''));const body=encodeURIComponent(`Họ tên: ${f.get('name')}\nNăm sinh: ${f.get('birth')}\nVị trí: ${f.get('position')}\nSĐT/Zalo: ${f.get('contact')}\nFacebook/Instagram: ${f.get('social')}\nKinh nghiệm: ${f.get('experience')}\nLý do muốn tham gia Rose FC: ${f.get('reason')}`);location.href=`mailto:rosefootballclub2025@gmail.com?subject=${subject}&body=${body}`;});}
 
 /* GLOBAL SPONSOR SECTION */
