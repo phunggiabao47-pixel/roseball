@@ -214,7 +214,7 @@ if(path==='matches.html'){
         </div>
         <div style="padding:18px;border-radius:14px;background:#f7f7f8;border:1px solid #e5e5e7">
           <div style="font-size:10px;font-weight:900;letter-spacing:.12em;color:#777">THỨ 7 · 05.09.2026 · SÂN NOK</div>
-          <div style="font-size:30px;font-weight:950;letter-spacing:-.04em;color:#d90416;margin:5px 0">CANCELLED</div>
+          <div style="font-size:30px;font-weight:950;letter-spacing:-.04em;color:#d90416;margin:5px 0">CXL</div>
           <strong style="display:block;color:#222">Ngày khai giảng ảnh hưởng tới nhiều cầu thủ, buổi sinh hoạt bù sẽ được thông báo sau.</strong>
         </div>
       </div>
