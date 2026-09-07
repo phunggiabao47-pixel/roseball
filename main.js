@@ -229,13 +229,13 @@ if(path==='matches.html'){
   }
 }
 
-/* NEW ARTICLE · 02.09.2026 */
+/* NEW ARTICLE · 08.09.2026 */
 const roseGrassrootsArticle={
-  href:'news-grassroots-youth-sustainability-02092026.html',
-  image:'rose-student-football.webp',
-  meta:'02.09.2026 · OPINION',
-  title:'Các đội bóng đá phong trào trẻ ở Việt Nam có thật sự bền vững?',
-  desc:'Gọi cầu, tham vọng chuyên nghiệp, cái tôi cầu thủ và bài toán tồn tại lâu dài của một CLB trẻ.'
+  href:'news-futsal-san5-youth-vietnam-08092026.html',
+  image:'rose-futsal-youth-modern.webp',
+  meta:'08.09.2026 · OPINION',
+  title:'Vì sao futsal và sân 5 lên ngôi trong bóng đá phong trào trẻ Việt Nam?',
+  desc:'Từ nhà kho, nhà thi đấu đến sân mini cỏ nhân tạo: vì sao sân 5 trở thành cánh cửa gần gũi của bóng đá phong trào trẻ.'
 };
 
 /* HOME LATEST · NEWEST FIRST */
