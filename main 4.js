@@ -167,7 +167,7 @@ if(path==='index.html'){
   }
 }
 
-/* WEEKLY SCHEDULE · 04–05.09.2026 */
+/* WEEKLY SCHEDULE · 12–13.09.2026 */
 if(path==='index.html'){
   const matchSection=[...document.querySelectorAll('section.section')].find(section=>{
     const kicker=section.querySelector('.section-head .kicker');
@@ -182,20 +182,21 @@ if(path==='index.html'){
     if(matchCentre){
       matchCentre.innerHTML=`
         <div class="match-card red">
-          <div class="league">THỨ 6 · 04.09.2026 · SÂN NOK</div>
+          <div class="league">THỨ 7 · 12.09.2026 · P. CHÁNH HƯNG</div>
           <div style="padding:22px 8px 8px">
-            <div class="kicker">SINH HOẠT GIAO LƯU HÀNG TUẦN</div>
-            <h3 style="font-size:52px;line-height:1;margin:9px 0 12px">18:00</h3>
-            <p style="margin:0 0 18px;opacity:.88">Sinh hoạt và giao lưu bóng đá định kỳ của Rose FC.</p>
+            <div class="kicker">GIAO HỮU KÍN FUTSAL</div>
+            <h3 style="font-size:52px;line-height:1;margin:9px 0 12px">16:20</h3>
+            <p style="margin:0 0 18px;opacity:.88">Nhà thi đấu Trung tâm Cung ứng Dịch vụ công P. Chánh Hưng</p>
             <div class="datebox">* Giờ trên là giờ có mặt</div>
           </div>
         </div>
         <div class="match-card">
-          <div class="league">THỨ 7 · 05.09.2026 · SÂN NOK</div>
+          <div class="league">CHỦ NHẬT · 13.09.2026 · SÂN BÓNG NOK</div>
           <div style="padding:22px 8px 8px">
             <div class="kicker">TẬP LUYỆN NỘI BỘ</div>
-            <h3 style="font-size:46px;line-height:1;margin:9px 0 16px;letter-spacing:-.035em">CANCELLED</h3>
-            <p style="margin:0 0 18px;color:#bdbdc2">Ngày khai giảng ảnh hưởng tới nhiều cầu thủ, buổi sinh hoạt bù sẽ được thông báo sau.</p>
+            <h3 style="font-size:52px;line-height:1;margin:9px 0 12px">16:30</h3>
+            <p style="margin:0 0 18px;color:#bdbdc2">Sân bóng đá NOK · P. Chánh Hưng</p>
+            <div class="datebox">* Giờ trên là giờ có mặt</div>
           </div>
         </div>`;
     }
@@ -208,17 +209,19 @@ if(path==='matches.html'){
     upcomingBox.innerHTML=`
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
         <div style="padding:18px;border-radius:14px;background:#fff5f6;border:1px solid #ffd7db">
-          <div style="font-size:10px;font-weight:900;letter-spacing:.12em;color:#d90416">THỨ 6 · 04.09.2026 · SÂN NOK</div>
-          <div style="font-size:34px;font-weight:950;letter-spacing:-.04em;color:#111;margin:5px 0">18:00</div>
-          <strong style="display:block;color:#222">Sinh hoạt giao lưu hàng tuần</strong>
+          <div style="font-size:10px;font-weight:900;letter-spacing:.12em;color:#d90416">THỨ 7 · 12.09.2026</div>
+          <div style="font-size:34px;font-weight:950;letter-spacing:-.04em;color:#111;margin:5px 0">16:20</div>
+          <strong style="display:block;color:#222">Giao hữu kín Futsal</strong>
+          <div style="margin-top:8px;font-size:12px;line-height:1.5;color:#777">Nhà thi đấu Trung tâm Cung ứng Dịch vụ công P. Chánh Hưng</div>
         </div>
         <div style="padding:18px;border-radius:14px;background:#f7f7f8;border:1px solid #e5e5e7">
-          <div style="font-size:10px;font-weight:900;letter-spacing:.12em;color:#777">THỨ 7 · 05.09.2026 · SÂN NOK</div>
-          <div style="font-size:30px;font-weight:950;letter-spacing:-.04em;color:#d90416;margin:5px 0">CXL</div>
-          <strong style="display:block;color:#222">Ngày khai giảng ảnh hưởng tới nhiều cầu thủ, buổi sinh hoạt bù sẽ được thông báo sau.</strong>
+          <div style="font-size:10px;font-weight:900;letter-spacing:.12em;color:#777">CHỦ NHẬT · 13.09.2026</div>
+          <div style="font-size:34px;font-weight:950;letter-spacing:-.04em;color:#111;margin:5px 0">16:30</div>
+          <strong style="display:block;color:#222">Tập luyện nội bộ</strong>
+          <div style="margin-top:8px;font-size:12px;line-height:1.5;color:#777">Sân bóng đá NOK · P. Chánh Hưng</div>
         </div>
       </div>
-      <div style="margin-top:13px;font-size:12px;color:#8a8480">* Giờ trên là giờ có mặt đối với buổi Thứ 6.</div>`;
+      <div style="margin-top:13px;font-size:12px;color:#8a8480">* Tất cả thời gian trên là giờ có mặt.</div>`;
 
     const upcomingHead=upcomingBox.previousElementSibling;
     const upcomingHeading=upcomingHead?upcomingHead.querySelector('h2'):null;
