@@ -121,6 +121,9 @@
 
 <script>
 (() => {
+  // DÁN URL GOOGLE APPS SCRIPT WEB APP KẾT THÚC BẰNG /exec VÀO ĐÂY.
+  const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+
   const positions = ["GK","CB","LB","RB","DM","CM","AM","LM","RM","LW","RW","CF","ST"];
   const primary = document.getElementById('primaryPosition');
   const secondary = document.getElementById('secondaryPosition');
@@ -136,34 +139,61 @@
   const submitBtn = document.getElementById('submitBtn');
   const submitMsg = document.getElementById('submitMsg');
 
+  function configured(){ return /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(APPS_SCRIPT_URL); }
   function showForm(){ loginPanel.classList.add('is-hidden'); form.classList.add('is-open'); }
   function showLogin(){ form.classList.remove('is-open'); loginPanel.classList.remove('is-hidden'); }
-  if(sessionStorage.getItem('roseVgfToken')) showForm();
+  function setLoginError(text){ loginMsg.className='msg error show'; loginMsg.textContent=text; }
+  async function postToSheet(data){
+    const r = await fetch(APPS_SCRIPT_URL, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(data),
+      redirect:'follow'
+    });
+    const text = await r.text();
+    let json;
+    try { json = JSON.parse(text); } catch (_) { throw new Error('Google Script trả về dữ liệu không hợp lệ.'); }
+    if(!json.ok) throw new Error(json.message || 'Không thể xử lý yêu cầu.');
+    return json;
+  }
+
+  // Chỉ lưu mã trong phiên hiện tại của trình duyệt, không ghi vào file HTML.
+  if(sessionStorage.getItem('roseVgfMemberCode')) showForm();
 
   loginBtn.addEventListener('click', async () => {
-    loginMsg.className = 'msg error'; loginMsg.textContent = '';
+    loginMsg.className='msg error'; loginMsg.textContent='';
     const code = memberCode.value.trim();
-    if(!code){ loginMsg.textContent='Vui lòng nhập mã truy cập.'; loginMsg.classList.add('show'); return; }
-    loginBtn.disabled = true;
+    if(!code){ setLoginError('Vui lòng nhập mã truy cập.'); return; }
+    if(!configured()){ setLoginError('Trang đăng ký chưa được BQL kết nối Google Sheets.'); return; }
+    loginBtn.disabled=true;
     try{
-      const r = await fetch('/api/vgf-auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
-      const data = await r.json();
-      if(!r.ok) throw new Error(data.message || 'Mã truy cập không chính xác.');
-      sessionStorage.setItem('roseVgfToken', data.token);
-      memberCode.value=''; showForm();
-    }catch(e){ loginMsg.textContent=e.message; loginMsg.classList.add('show'); }
+      const data = await postToSheet({action:'login', memberCode:code});
+      if(!data.ok) throw new Error(data.message || 'Mã truy cập không chính xác.');
+      sessionStorage.setItem('roseVgfMemberCode', code);
+      memberCode.value='';
+      showForm();
+    }catch(e){ setLoginError(e.message || 'Không thể kết nối Google Sheets.'); }
     finally{ loginBtn.disabled=false; }
   });
+
   memberCode.addEventListener('keydown',e=>{ if(e.key==='Enter') loginBtn.click(); });
-  logoutBtn.addEventListener('click',()=>{ sessionStorage.removeItem('roseVgfToken'); showLogin(); });
+  logoutBtn.addEventListener('click',()=>{ sessionStorage.removeItem('roseVgfMemberCode'); showLogin(); });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     submitMsg.className='msg'; submitMsg.textContent='';
     if(!form.checkValidity()){ form.reportValidity(); return; }
-    const token = sessionStorage.getItem('roseVgfToken');
-    if(!token){ showLogin(); return; }
+    const code = sessionStorage.getItem('roseVgfMemberCode');
+    if(!code){ showLogin(); return; }
+    if(!configured()){
+      submitMsg.className='msg error show';
+      submitMsg.textContent='Trang đăng ký chưa được BQL kết nối Google Sheets.';
+      return;
+    }
+
     const payload = {
+      action:'register',
+      memberCode:code,
       fullName: document.getElementById('fullName').value.trim(),
       birthDate: document.getElementById('birthDate').value,
       primaryPosition: primary.value,
@@ -178,21 +208,27 @@
       agreeForward: document.getElementById('agreeForward').checked,
       truthConfirm: document.getElementById('truthConfirm').checked,
       selectionConfirm: document.getElementById('selectionConfirm').checked,
-      versions: { vgf: 'TBD', foundation: '1.0', forward: '1.0' }
+      vgfTermsVersion:'TBD',
+      foundationVersion:'1.0',
+      forwardVersion:'1.0'
     };
+
     submitBtn.disabled=true;
+    submitBtn.textContent='ĐANG GỬI...';
     try{
-      const r = await fetch('/api/vgf-register',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(payload)});
-      const data = await r.json();
-      if(!r.ok) throw new Error(data.message || 'Không thể gửi đăng ký.');
+      const data = await postToSheet(payload);
       submitMsg.className='msg ok show';
       submitMsg.innerHTML=`<b>ĐĂNG KÝ ĐÃ ĐƯỢC GHI NHẬN</b><br>Registration ID: ${data.registrationId}<br>Trạng thái: Pending`;
       form.reset();
       window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
     }catch(e){
-      submitMsg.className='msg error show'; submitMsg.textContent=e.message;
-      if(String(e.message).toLowerCase().includes('phiên đăng nhập')){ sessionStorage.removeItem('roseVgfToken'); }
-    }finally{ submitBtn.disabled=false; }
+      submitMsg.className='msg error show';
+      submitMsg.textContent=e.message || 'Không thể gửi đăng ký.';
+      if(String(e.message).includes('Mã truy cập')) sessionStorage.removeItem('roseVgfMemberCode');
+    }finally{
+      submitBtn.disabled=false;
+      submitBtn.textContent='XÁC NHẬN ĐĂNG KÝ VGF';
+    }
   });
 })();
 </script>
