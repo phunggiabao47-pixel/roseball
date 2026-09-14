@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#d90416">
+  <title>VGF Internal Registration | Rose FC</title>
+  <meta name="description" content="Cổng đăng ký nội bộ cầu thủ Rose FC tham gia Vietnam Grassroots Football (VGF).">
+  <link rel="icon" href="rose-fc-logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{--vgf-red:#d90416;--vgf-ink:#111;--vgf-muted:#6f6a66;--vgf-soft:#f6f2ee;--vgf-border:#e8dfd8}
+    .vgf-shell{min-height:72vh;padding:58px 0 84px;background:linear-gradient(180deg,#fff 0%,#faf7f4 100%)}
+    .vgf-wrap{width:min(1080px,calc(100% - 32px));margin:auto}
+    .vgf-header{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:28px}
+    .vgf-kicker{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--vgf-red);margin-bottom:8px}
+    .vgf-header h1{font-size:clamp(38px,7vw,72px);line-height:.96;letter-spacing:-.045em;margin:0;max-width:760px}
+    .vgf-header p{max-width:480px;color:var(--vgf-muted);line-height:1.7;margin:0}
+    .vgf-card{background:#fff;border:1px solid var(--vgf-border);border-radius:24px;padding:28px;box-shadow:0 12px 40px rgba(22,15,10,.06)}
+    .vgf-login{max-width:560px;margin:32px auto 0}
+    .vgf-login-brand{display:flex;gap:16px;align-items:center;margin-bottom:22px}
+    .vgf-login-brand img{width:66px;height:66px;object-fit:contain}
+    .vgf-login-brand strong{display:block;font-size:24px}.vgf-login-brand span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#777}
+    .vgf-form{display:none}.vgf-form.is-open{display:block}.vgf-login.is-hidden{display:none}
+    .form-section{margin-top:18px;border:1px solid var(--vgf-border);border-radius:20px;padding:24px;background:#fff}
+    .form-section:first-child{margin-top:0}.form-section h2{font-size:24px;margin:0 0 6px}.form-section .desc{color:var(--vgf-muted);margin:0 0 20px;line-height:1.65}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-grid .full{grid-column:1/-1}
+    label{display:block;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;margin-bottom:7px;color:#302d2b}
+    input,select{width:100%;box-sizing:border-box;border:1px solid #d8d0ca;border-radius:12px;min-height:48px;padding:0 13px;font:inherit;background:#fff;color:#111;outline:none}
+    input:focus,select:focus{border-color:var(--vgf-red);box-shadow:0 0 0 3px rgba(217,4,22,.08)}
+    .project-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.project-item{background:#111;color:#fff;border-radius:16px;padding:18px}.project-item span{display:block;color:#aaa;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:6px}.project-item b{font-size:18px}
+    .terms{display:grid;gap:12px}.term-card{border:1px solid var(--vgf-border);border-radius:16px;padding:18px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}.term-card h3{margin:0 0 5px;font-size:18px}.term-card p{margin:0;color:var(--vgf-muted);font-size:14px;line-height:1.55}.term-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pdf-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 14px;border-radius:999px;background:#111;color:#fff;text-decoration:none;font-weight:850;font-size:12px;white-space:nowrap}.pdf-btn.missing{background:#eee;color:#777;pointer-events:none}
+    .check-row{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:14px;line-height:1.55}.check-row input{width:18px;height:18px;min-height:auto;margin-top:2px;flex:0 0 auto}.check-row label{font-size:14px;text-transform:none;letter-spacing:0;font-weight:650;margin:0}
+    .submit-row{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:24px}.submit-note{color:var(--vgf-muted);font-size:13px;line-height:1.5}.btn-submit,.btn-login{border:0;border-radius:999px;background:var(--vgf-red);color:#fff;min-height:48px;padding:0 24px;font-weight:900;cursor:pointer;font-size:14px}.btn-submit:disabled,.btn-login:disabled{opacity:.55;cursor:not-allowed}
+    .msg{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px;display:none}.msg.show{display:block}.msg.error{background:#fff0f0;color:#9a0010;border:1px solid #ffd2d7}.msg.ok{background:#effaf3;color:#116530;border:1px solid #cbeed7}
+    .portal-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}.portal-top .status{font-size:12px;font-weight:900;color:#1b6e39;background:#effaf3;border-radius:999px;padding:8px 12px}.logout{background:none;border:0;color:#777;text-decoration:underline;cursor:pointer}
+    .privacy{font-size:12px;color:#777;line-height:1.6;margin-top:12px}
+    @media(max-width:760px){.vgf-header{display:block}.vgf-header p{margin-top:16px}.form-grid,.project-strip{grid-template-columns:1fr}.term-card{grid-template-columns:1fr}.submit-row{align-items:stretch;flex-direction:column}.btn-submit{width:100%}.vgf-card,.form-section{padding:20px}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>ROSE FOOTBALL CLUB · TP.HCM</span><span>VGF Internal Registration</span></div></div>
+  <nav class="navbar"><div class="container navwrap"><a class="brand" href="index.html"><img src="rose-fc-logo.png" alt="Rose FC"><div><strong>ROSE FC</strong><span>Roseball Vietnam</span></div></a><button class="menu-btn" aria-label="Menu">☰</button><div class="navlinks"><a href="index.html">Home</a><a href="club.html">Club</a><a href="team.html">Team</a><a href="matches.html">Matches</a><a href="stats.html">Stats</a><a href="news.html">News</a><a href="road-to-vgf.html">Road to VGF</a><a href="media.html">Media</a><a href="store.html">Store</a></div></div></nav>
+
+  <main class="vgf-shell">
+    <div class="vgf-wrap">
+      <div class="vgf-header">
+        <div><div class="vgf-kicker">Rose FC · Internal Portal</div><h1>VGF PLAYER REGISTRATION</h1></div>
+        <p>Cổng đăng ký nội bộ dành cho cầu thủ Rose FC dự kiến tham gia hệ thống Vietnam Grassroots Football. Thông tin được sử dụng cho công tác quản lý roster và hồ sơ VGF của CLB.</p>
+      </div>
+
+      <section id="loginPanel" class="vgf-card vgf-login">
+        <div class="vgf-login-brand"><img src="rose-fc-logo.png" alt="Rose FC"><div><strong>Member Access</strong><span>Rose FC Internal</span></div></div>
+        <label for="memberCode">Mã thành viên nội bộ</label>
+        <input id="memberCode" type="password" autocomplete="current-password" placeholder="Nhập mã truy cập">
+        <button id="loginBtn" class="btn-login" style="width:100%;margin-top:14px">ĐĂNG NHẬP</button>
+        <div id="loginMsg" class="msg error"></div>
+        <div class="privacy">Mã truy cập được xác thực ở phía máy chủ. Website không lưu mật khẩu thành viên trong mã JavaScript phía trình duyệt.</div>
+      </section>
+
+      <form id="registrationForm" class="vgf-form" novalidate>
+        <div class="portal-top"><span class="status">● MEMBER ACCESS ACTIVE</span><button type="button" id="logoutBtn" class="logout">Đăng xuất</button></div>
+
+        <section class="form-section">
+          <h2>01 · Thông tin cầu thủ</h2>
+          <p class="desc">Thông tin cơ bản phục vụ danh sách đăng ký VGF của Rose FC.</p>
+          <div class="form-grid">
+            <div class="full"><label for="fullName">Họ và tên đầy đủ *</label><input id="fullName" name="fullName" required autocomplete="name"></div>
+            <div><label for="birthDate">Ngày / tháng / năm sinh *</label><input id="birthDate" name="birthDate" type="date" required></div>
+            <div><label for="joinYear">Năm gia nhập Rose FC *</label><select id="joinYear" name="joinYear" required><option value="">Chọn năm</option><option>2025</option><option>2026</option></select></div>
+            <div><label for="primaryPosition">Vị trí thi đấu chính *</label><select id="primaryPosition" name="primaryPosition" required></select></div>
+            <div><label for="secondaryPosition">Vị trí thi đấu phụ</label><select id="secondaryPosition" name="secondaryPosition"></select></div>
+            <div><label for="shirtNumber">Số áo mong muốn *</label><input id="shirtNumber" name="shirtNumber" type="number" min="1" max="99" required inputmode="numeric"></div>
+            <div><label for="phone">Số điện thoại *</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
+            <div class="full"><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>02 · Thông tin dự án VGF</h2>
+          <p class="desc">Đây là định hướng vận hành dự kiến tại thời điểm mở đăng ký.</p>
+          <div class="project-strip">
+            <div class="project-item"><span>Thời gian dự kiến</span><b>Tháng 11/2026</b></div>
+            <div class="project-item"><span>Hoạt động thường nhật</span><b>S7 Men’s Friendly</b></div>
+            <div class="project-item"><span>Tần suất dự kiến</span><b>01 trận / 04 tuần</b></div>
+          </div>
+          <div class="check-row"><input id="projectConfirm" name="projectConfirm" type="checkbox" required><label for="projectConfirm">Tôi xác nhận mong muốn được Rose FC xem xét đăng ký vào lực lượng tham gia hệ thống Vietnam Grassroots Football (VGF), bao gồm các hoạt động/giải đấu VGF khác trong tương lai theo kế hoạch của CLB.</label></div>
+        </section>
+
+        <section class="form-section">
+          <h2>03 · Điều lệ và cam kết</h2>
+          <p class="desc">Cần đọc và xác nhận riêng từng tài liệu. Hệ thống sẽ lưu phiên bản điều lệ mà cầu thủ đã đồng ý.</p>
+          <div class="terms">
+            <article class="term-card">
+              <div><h3>Điều lệ / Quy định VGF</h3><p>Tài liệu chính thức của Vietnam Grassroots Football áp dụng cho hoạt động tham gia hệ thống.</p><div class="check-row"><input id="agreeVGF" type="checkbox" required><label for="agreeVGF">Tôi xác nhận đã đọc, hiểu và đồng ý tuân thủ quy định VGF.</label></div></div>
+              <div class="term-actions"><a id="vgfPdfLink" class="pdf-btn missing" href="#" aria-disabled="true">CHỜ PDF VGF</a></div>
+            </article>
+            <article class="term-card">
+              <div><h3>Roseball Foundation · Version 1.0</h3><p>Điều lệ quỹ hoạt động chung chính thức của Rose FC.</p><div class="check-row"><input id="agreeFoundation" type="checkbox" required><label for="agreeFoundation">Tôi đã đọc, hiểu và đồng ý với Điều lệ Roseball Foundation.</label></div></div>
+              <div class="term-actions"><a class="pdf-btn" href="docs/roseball-foundation.pdf" target="_blank" rel="noopener">XEM PDF</a></div>
+            </article>
+            <article class="term-card">
+              <div><h3>Roseball Forward · Version 1.0</h3><p>Điều lệ quỹ chuyên biệt dành cho dự án VGF của Rose FC.</p><div class="check-row"><input id="agreeForward" type="checkbox" required><label for="agreeForward">Tôi đã đọc, hiểu và đồng ý với Điều lệ Roseball Forward và các nghĩa vụ liên quan đến hoạt động VGF.</label></div></div>
+              <div class="term-actions"><a class="pdf-btn" href="docs/roseball-forward.pdf" target="_blank" rel="noopener">XEM PDF</a></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>04 · Xác nhận cuối</h2>
+          <div class="check-row"><input id="truthConfirm" type="checkbox" required><label for="truthConfirm">Tôi xác nhận các thông tin đã cung cấp là đúng.</label></div>
+          <div class="check-row"><input id="selectionConfirm" type="checkbox" required><label for="selectionConfirm">Tôi hiểu việc gửi biểu mẫu không đồng nghĩa với việc được đảm bảo một suất thi đấu VGF; danh sách cuối cùng thuộc quyền quyết định của Rose FC.</label></div>
+          <div class="submit-row"><div class="submit-note">Sau khi gửi, hồ sơ được ghi nhận ở trạng thái <b>Pending</b> để BQL kiểm tra.</div><button id="submitBtn" class="btn-submit" type="submit">XÁC NHẬN ĐĂNG KÝ VGF</button></div>
+          <div id="submitMsg" class="msg"></div>
+        </section>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-bottom"><span>Rose Football Club · VGF Internal Registration</span><span>Together We Grow.</span></div></div></footer>
+
+<script>
+(() => {
+  const positions = ["GK","CB","LB","RB","DM","CM","AM","LM","RM","LW","RW","CF","ST"];
+  const primary = document.getElementById('primaryPosition');
+  const secondary = document.getElementById('secondaryPosition');
+  primary.innerHTML = '<option value="">Chọn vị trí</option>' + positions.map(x=>`<option>${x}</option>`).join('');
+  secondary.innerHTML = '<option value="">Không chọn</option>' + positions.map(x=>`<option>${x}</option>`).join('');
+
+  const loginPanel = document.getElementById('loginPanel');
+  const form = document.getElementById('registrationForm');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginMsg = document.getElementById('loginMsg');
+  const memberCode = document.getElementById('memberCode');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitMsg = document.getElementById('submitMsg');
+
+  function showForm(){ loginPanel.classList.add('is-hidden'); form.classList.add('is-open'); }
+  function showLogin(){ form.classList.remove('is-open'); loginPanel.classList.remove('is-hidden'); }
+  if(sessionStorage.getItem('roseVgfToken')) showForm();
+
+  loginBtn.addEventListener('click', async () => {
+    loginMsg.className = 'msg error'; loginMsg.textContent = '';
+    const code = memberCode.value.trim();
+    if(!code){ loginMsg.textContent='Vui lòng nhập mã truy cập.'; loginMsg.classList.add('show'); return; }
+    loginBtn.disabled = true;
+    try{
+      const r = await fetch('/api/vgf-auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
+      const data = await r.json();
+      if(!r.ok) throw new Error(data.message || 'Mã truy cập không chính xác.');
+      sessionStorage.setItem('roseVgfToken', data.token);
+      memberCode.value=''; showForm();
+    }catch(e){ loginMsg.textContent=e.message; loginMsg.classList.add('show'); }
+    finally{ loginBtn.disabled=false; }
+  });
+  memberCode.addEventListener('keydown',e=>{ if(e.key==='Enter') loginBtn.click(); });
+  logoutBtn.addEventListener('click',()=>{ sessionStorage.removeItem('roseVgfToken'); showLogin(); });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitMsg.className='msg'; submitMsg.textContent='';
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const token = sessionStorage.getItem('roseVgfToken');
+    if(!token){ showLogin(); return; }
+    const payload = {
+      fullName: document.getElementById('fullName').value.trim(),
+      birthDate: document.getElementById('birthDate').value,
+      primaryPosition: primary.value,
+      secondaryPosition: secondary.value,
+      shirtNumber: document.getElementById('shirtNumber').value,
+      phone: document.getElementById('phone').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      joinYear: document.getElementById('joinYear').value,
+      projectConfirm: document.getElementById('projectConfirm').checked,
+      agreeVGF: document.getElementById('agreeVGF').checked,
+      agreeFoundation: document.getElementById('agreeFoundation').checked,
+      agreeForward: document.getElementById('agreeForward').checked,
+      truthConfirm: document.getElementById('truthConfirm').checked,
+      selectionConfirm: document.getElementById('selectionConfirm').checked,
+      versions: { vgf: 'TBD', foundation: '1.0', forward: '1.0' }
+    };
+    submitBtn.disabled=true;
+    try{
+      const r = await fetch('/api/vgf-register',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(payload)});
+      const data = await r.json();
+      if(!r.ok) throw new Error(data.message || 'Không thể gửi đăng ký.');
+      submitMsg.className='msg ok show';
+      submitMsg.innerHTML=`<b>ĐĂNG KÝ ĐÃ ĐƯỢC GHI NHẬN</b><br>Registration ID: ${data.registrationId}<br>Trạng thái: Pending`;
+      form.reset();
+      window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+    }catch(e){
+      submitMsg.className='msg error show'; submitMsg.textContent=e.message;
+      if(String(e.message).toLowerCase().includes('phiên đăng nhập')){ sessionStorage.removeItem('roseVgfToken'); }
+    }finally{ submitBtn.disabled=false; }
+  });
+})();
+</script>
+</body>
+</html>
