@@ -1,0 +1,9 @@
+CÁC FILE BÀI NEWS CÓ THỂ XOÁ KHỎI REPO
+- news-demenino-official-kit-2026-27.html
+- news-club-schedule-venue-update-03092026.html
+- news-match-report-rose-vs-kfc-30082026.html
+- news-prematch-rose-vs-kfc-30082026.html
+- news-restructure-2026.html
+- news-seven-a-side-2027.html
+
+news.html mới đã loại toàn bộ các bài trên và chỉ giữ các bài từ 01/09/2026 trở đi, ngoài bài lịch 12/09 đã được loại theo yêu cầu.
