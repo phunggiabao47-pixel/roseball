@@ -1,250 +1,42 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#d90416"><title>Rose FC — The Final Chapter</title><meta name="description" content="Rose Football Club · 08.03.2025 — 25.09.2026. The Final Chapter. Transition in progress."><link rel="icon" href="rose-fc-logo.png"><link rel="stylesheet" href="styles.css">
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050b14">
+<meta name="robots" content="noindex,nofollow">
+<title>Transition in Progress</title>
+<meta name="description" content="A new chapter is taking shape. Transition in progress.">
 <style>
-.rose-note{
-  position:relative;overflow:hidden;background:#f6f1e9;color:#1d1b1a;
-  padding:92px 0;border-top:1px solid #e7dfd4;border-bottom:1px solid #e7dfd4;
-}
-.rose-note:after{
-  content:"";position:absolute;width:340px;height:340px;right:-170px;top:-170px;
-  border-radius:50%;background:rgba(217,4,22,.055);pointer-events:none;
-}
-.rose-note-inner{
-  position:relative;z-index:1;display:grid;grid-template-columns:.78fr 1.22fr;
-  gap:72px;align-items:start;
-}
-.rose-note-kicker{
-  color:#d90416;font-size:11px;font-weight:900;letter-spacing:.22em;
-  text-transform:uppercase;margin-bottom:14px;
-}
-.rose-note h2{
-  margin:0;font-size:clamp(45px,6.4vw,78px);line-height:.94;
-  letter-spacing:-.055em;max-width:610px;
-}
-.rose-note-copy{
-  max-width:700px;font-size:21px;line-height:1.75;color:#5f5953;margin:0;
-}
-.rose-note-sign{
-  margin-top:28px;display:flex;align-items:center;gap:14px;font-size:13px;
-  font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#252220;
-}
-.rose-note-sign:before{
-  content:"";width:42px;height:2px;background:#d90416;border-radius:99px;
-}
-.rose-note-place{
-  display:block;margin-top:8px;margin-left:56px;color:#8b8279;font-size:11px;
-  letter-spacing:.1em;text-transform:uppercase;
-}
-.rose-closing{
-  position:relative;overflow:hidden;
-  background:linear-gradient(135deg,#b50012 0%,#d90416 58%,#8f000d 100%);
-  color:#fff;padding:86px 0;
-}
-.rose-closing:before{
-  content:"ROSE";position:absolute;right:-18px;bottom:-52px;
-  font-size:clamp(130px,22vw,320px);line-height:.8;font-weight:950;
-  letter-spacing:-.08em;color:rgba(255,255,255,.055);pointer-events:none;
-}
-.rose-closing-inner{
-  position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;
-  gap:56px;align-items:end;
-}
-.rose-closing-kicker{
-  font-size:11px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;
-  opacity:.78;margin-bottom:14px;
-}
-.rose-closing h2{
-  margin:0;font-size:clamp(54px,8vw,104px);line-height:.86;
-  letter-spacing:-.065em;max-width:780px;
-}
-.rose-closing-copy{
-  max-width:520px;font-size:20px;line-height:1.65;
-  color:rgba(255,255,255,.88);margin:0 0 26px;
-}
-.rose-closing-actions{display:flex;flex-wrap:wrap;gap:12px}
-.rose-closing-btn{
-  display:inline-flex;align-items:center;justify-content:center;min-height:48px;
-  padding:0 20px;border-radius:999px;text-decoration:none;font-weight:900;
-  font-size:13px;letter-spacing:.02em;transition:transform .18s ease,background .18s ease;
-}
-.rose-closing-btn:hover{transform:translateY(-2px)}
-.rose-closing-btn.light{background:#fff;color:#111}
-.rose-closing-btn.ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
-.rose-closing-rule{width:52px;height:3px;background:#fff;border-radius:99px;margin-bottom:20px}
-
-/* Pinned farewell notice · 25.09.2026 */
-.legacy-pin{background:#fff;border-bottom:1px solid #ececec;padding:34px 0 42px}
-.legacy-pin-card{position:relative;max-width:980px;margin:0 auto;background:#111;color:#fff;border-radius:22px;padding:42px 46px;box-shadow:0 20px 60px rgba(0,0,0,.12);overflow:hidden}
-.legacy-pin-card:after{content:"08.03.2025 — 25.09.2026";position:absolute;right:-8px;bottom:-16px;font-size:clamp(38px,7vw,82px);font-weight:950;letter-spacing:-.055em;color:rgba(255,255,255,.035);white-space:nowrap;pointer-events:none}
-.legacy-pin-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
-.legacy-pin-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#fff}
-.legacy-pin-badge:before{content:"";width:8px;height:8px;border-radius:50%;background:#d90416;box-shadow:0 0 0 5px rgba(217,4,22,.18)}
-.legacy-pin-date{font-size:11px;color:#aaa;letter-spacing:.06em}
-.legacy-pin h2{position:relative;z-index:1;margin:0 0 7px;font-size:clamp(34px,5vw,62px);line-height:.94;letter-spacing:-.055em}
-.legacy-pin-sub{position:relative;z-index:1;margin:0 0 8px;font-size:17px;font-weight:800;color:#ddd}
-.legacy-pin-effective{position:relative;z-index:1;margin:0 0 28px;font-size:11px;color:#8f8f8f;letter-spacing:.04em}
-.legacy-pin-copy{position:relative;z-index:1;max-width:820px;color:#d2d2d2;font-size:16px;line-height:1.72}
-.legacy-pin-copy p{margin:0 0 14px}
-.legacy-pin-honours{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 22px;margin:22px 0;padding:20px 0;border-top:1px solid #2b2b2b;border-bottom:1px solid #2b2b2b}
-.legacy-pin-honours span{font-size:13px;font-weight:800;color:#fff}
-.legacy-pin-final{position:relative;z-index:1;margin-top:24px;font-size:20px;font-weight:900;color:#fff}
-.legacy-pin-sign{position:relative;z-index:1;margin-top:22px;color:#aaa;font-size:12px;line-height:1.6;text-transform:uppercase;letter-spacing:.08em}
-.legacy-pin-sign strong{display:block;color:#fff;font-size:14px}
-
-/* Entry notice */
-.legacy-modal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.68);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.legacy-modal[hidden]{display:none}
-.legacy-modal-card{width:min(560px,100%);background:#fff;border-radius:22px;padding:30px;box-shadow:0 30px 100px rgba(0,0,0,.35)}
-.legacy-modal-kicker{font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#d90416;margin-bottom:12px}
-.legacy-modal-card h2{margin:0 0 8px;font-size:34px;line-height:1;letter-spacing:-.045em;color:#111}
-.legacy-modal-period{font-size:13px;font-weight:900;color:#555;margin-bottom:6px}
-.legacy-modal-effective{font-size:10px;color:#999;margin-bottom:18px}
-.legacy-modal-card p{margin:0 0 22px;color:#555;line-height:1.6;font-size:15px}
-.legacy-modal-actions{display:flex;gap:10px;flex-wrap:wrap}
-.legacy-modal-btn{border:0;border-radius:999px;min-height:44px;padding:0 18px;font:inherit;font-size:12px;font-weight:900;cursor:pointer}
-.legacy-modal-btn.primary{background:#d90416;color:#fff}
-.legacy-modal-btn.secondary{background:#f1f1f1;color:#111}
-body.legacy-modal-open{overflow:hidden}
-
-@media(max-width:820px){
-  .rose-note{padding:68px 0 72px}
-  .rose-note-inner{grid-template-columns:1fr;gap:26px}
-  .rose-note-copy{font-size:18px}
-  .rose-closing{padding:66px 0 70px}
-  .rose-closing-inner{grid-template-columns:1fr;gap:34px}
-  .rose-closing-copy{font-size:18px}
-  .rose-closing:before{right:-8px;bottom:-25px}
-}
-@media(max-width:680px){
-  .legacy-pin{padding:20px 0 28px}
-  .legacy-pin-card{border-radius:18px;padding:30px 24px}
-  .legacy-pin-top{align-items:flex-start;flex-direction:column;gap:8px}
-  .legacy-pin-honours{grid-template-columns:1fr}
-  .legacy-modal-card{padding:26px 22px}
-  .legacy-modal-card h2{font-size:30px}
-}
-
-/* Transition Mode · 25.09.2026 */
-.transition-home{background:#fff}
-.transition-cover{padding:28px 0 0;background:#0d0d0d}
-.transition-cover .container{max-width:1240px}
-.transition-cover-img{display:block;width:100%;height:auto;border-radius:18px 18px 0 0}
-.transition-message{background:#0d0d0d;color:#fff;padding:56px 0 72px}
-.transition-message-inner{max-width:920px}
-.transition-kicker{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#d90416;margin-bottom:14px}
-.transition-message h1{margin:0;font-size:clamp(52px,8vw,100px);line-height:.9;letter-spacing:-.06em}
-.transition-period{margin-top:18px;font-size:14px;font-weight:900;letter-spacing:.09em;color:#ddd}
-.transition-effective{margin-top:7px;font-size:10px;letter-spacing:.05em;color:#777}
-.transition-message p{max-width:820px;margin:32px 0 0;color:#c8c8c8;font-size:18px;line-height:1.75}
-.transition-message p strong{color:#fff}
-.transition-next{margin-top:36px;padding-top:24px;border-top:1px solid #292929;font-size:20px;font-weight:950;letter-spacing:.12em}
-.transition-archive{padding:78px 0;background:#f6f1e9;color:#1d1b1a}
-.transition-archive-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
-.transition-archive h2{margin:0;font-size:clamp(42px,5vw,68px);line-height:.96;letter-spacing:-.055em}
-.transition-archive p{margin:0;color:#665f58;font-size:18px;line-height:1.75;max-width:680px}
-.transition-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-@media(max-width:820px){
-  .transition-cover{padding-top:14px}
-  .transition-cover-img{border-radius:12px 12px 0 0}
-  .transition-message{padding:42px 0 54px}
-  .transition-message p{font-size:16px}
-  .transition-next{font-size:16px}
-  .transition-archive{padding:58px 0}
-  .transition-archive-grid{grid-template-columns:1fr;gap:24px}
-}
-
-</style>
-</head><body>
-<div class="topbar"><div class="container"><span>ROSE FOOTBALL CLUB · TP.HCM</span><span>roseballvn.com · @roseball_vn</span></div></div>
-<nav class="navbar"><div class="container navwrap"><a class="brand" href="index.html"><img src="rose-fc-logo.png" alt="Rose FC"><div><strong>ROSE FC</strong><span>Roseball Vietnam</span></div></a><button class="menu-btn" aria-label="Menu">☰</button><div class="navlinks"><a href="index.html">Home</a><a href="news.html">Newsroom</a><a href="media.html">Media</a></div></div></nav>
-
-<main class="transition-home">
-<section class="transition-cover" aria-label="Rose FC — The Final Chapter">
-  <div class="container">
-    <img class="transition-cover-img" src="rose-final-chapter-banner.jpg" alt="Rose FC — The Final Chapter · 08.03.2025 — 25.09.2026">
-  </div>
-</section>
-
-<section class="transition-message" id="rose-final-chapter">
-  <div class="container transition-message-inner">
-    <div class="transition-kicker">Official Club Notice · Transition</div>
-    <h1>THE FINAL CHAPTER.</h1>
-    <div class="transition-period">ROSE FOOTBALL CLUB · 08.03.2025 — 25.09.2026</div>
-    <div class="transition-effective">Có hiệu lực từ 00:00 ngày 25/09/2026 (UTC+7)</div>
-    <p>Rose Football Club đã chính thức khép lại một chặng đường. <strong>Đây không phải là sự giải thể.</strong> Những nền tảng và giá trị đã được xây dựng đang được chuyển giao, kế thừa và chuẩn bị bước vào một chương mới.</p>
-    <div class="transition-next">THE NEXT CHAPTER IS COMING.</div>
-  </div>
-</section>
-<section class="section alt"><div class="container"><div class="section-head"><div><div class="kicker">Latest</div><h2>Tin mới từ Rose FC</h2></div><a class="btn btn-dark" href="news.html">Xem tất cả tin</a></div><div class="cards">
-<a href="news-why-kit-matters-05092026.html" style="text-decoration:none;color:inherit"><article class="card"><img class="card-img" src="rose-kit-rosefc-demenino-2026.webp" alt="Mẫu áo Rose FC mùa giải 2026/27"><div class="card-body"><div class="meta">05.09.2026 · OPINION</div><h3>Vì sao áo đấu lại là thứ cơ bản nhất của một đội bóng?</h3><p class="muted">Từ màu áo chung đến bản sắc, kỷ luật và cách một tập thể bắt đầu vận hành như một CLB.</p></div></article></a>
-<a href="news-youth-tournaments-playground-or-business-04092026.html" style="text-decoration:none;color:inherit"><article class="card"><img class="card-img" src="rose-youth-tournaments-cover.webp" alt="Bóng đá phong trào trẻ và câu chuyện giải đấu"><div class="card-body"><div class="meta">04.09.2026 · OPINION</div><h3>Các giải bóng đá phong trào trẻ đang tạo sân chơi, hay đang bán những chiếc cúp?</h3><p class="muted">Một góc nhìn từ nhiều năm tiếp xúc với bóng đá trẻ: sân chơi, danh hiệu, lệ phí và giá trị thật cầu thủ nhận lại.</p></div></article></a>
-<a href="news-club-schedule-venue-update-03092026.html" style="text-decoration:none;color:inherit"><article class="card"><img class="card-img" src="rose-notice-schedule-12092026.webp" alt="Thông báo điều chỉnh lịch hoạt động Rose FC"><div class="card-body"><div class="meta">03.09.2026 · CLUB NOTICE</div><h3>Rose FC điều chỉnh lịch hoạt động & bổ sung sân sinh hoạt</h3><p class="muted">Lịch cuối tuần mới áp dụng từ 12/09, đồng thời bổ sung Fima Sport Phú Thọ hoạt động song song với sân NOK.</p></div></article></a>
-</div></div></section>
-
-<section class="transition-archive">
-  <div class="container transition-archive-grid">
-    <div>
-      <div class="transition-kicker">Rose FC Archive</div>
-      <h2>Một chặng đường được lưu lại.</h2>
-    </div>
-    <div>
-      <p>Newsroom và Media tiếp tục được giữ lại như kho lưu trữ của giai đoạn Rose FC. Các nội dung hoạt động mới sẽ được cập nhật sau khi chương tiếp theo được công bố chính thức.</p>
-      <div class="transition-actions">
-        <a class="btn btn-dark" href="news.html">NEWSROOM</a>
-        <a class="btn btn-red" href="media.html">MEDIA</a>
-      </div>
-    </div>
-  </div>
-</section>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#050b14;color:#fff}
+body{min-height:100vh;min-height:100svh;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+.page{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.055),transparent 24%),radial-gradient(circle at 12% 82%,rgba(255,255,255,.035),transparent 26%),linear-gradient(145deg,#071321 0%,#050b14 52%,#08111d 100%)}
+.pattern{position:absolute;inset:0;pointer-events:none;opacity:.62}.pattern:before,.pattern:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.09);width:540px;height:540px;transform:rotate(45deg)}.pattern:before{right:-290px;top:-220px}.pattern:after{left:-350px;bottom:-300px;width:620px;height:620px}
+.lines{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 0 9%,rgba(255,255,255,.045) 9% 9.08%,transparent 9.08% 91%,rgba(255,255,255,.045) 91% 91.08%,transparent 91.08%),linear-gradient(0deg,transparent 0 16%,rgba(255,255,255,.035) 16% 16.08%,transparent 16.08% 84%,rgba(255,255,255,.035) 84% 84.08%,transparent 84.08%)}
+.orbit{position:absolute;border:1px solid rgba(255,255,255,.075);border-radius:50%;pointer-events:none}.o1{width:360px;height:360px;right:-110px;top:13%}.o2{width:190px;height:190px;right:-25px;top:23%}
+.cross{position:absolute;right:8.5%;bottom:14%;width:88px;height:88px;opacity:.1}.cross:before,.cross:after{content:"";position:absolute;background:#fff}.cross:before{width:1px;height:88px;left:43px}.cross:after{height:1px;width:88px;top:43px}
+.wrap{position:relative;z-index:2;width:min(1180px,calc(100% - 44px));margin:auto;min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
+.top{display:flex;justify-content:space-between;align-items:center;padding:32px 0 24px;border-bottom:1px solid rgba(255,255,255,.12)}
+.status{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.68)}.dot{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.08)}.date{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.42)}
+.main{flex:1;display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;padding:70px 0}.kicker{font-size:11px;font-weight:850;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.56);margin-bottom:18px}
+h1{font-size:clamp(62px,8.8vw,126px);line-height:.82;letter-spacing:-.068em;margin:0;max-width:900px;font-weight:900}h1 span{display:block;color:rgba(255,255,255,.34)}
+.lead{font-size:clamp(18px,2vw,23px);line-height:1.55;max-width:680px;margin:34px 0 0;color:rgba(255,255,255,.78)}
+.copy{align-self:end;padding-bottom:8px}.copy p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.57);margin:0 0 24px}
+.values{border-top:1px solid rgba(255,255,255,.13);margin:30px 0}.value{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.13);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.quote{font-size:18px!important;line-height:1.55!important;color:#fff!important;font-weight:750;margin-top:30px!important}
+.reveal{display:flex;align-items:end;justify-content:space-between;gap:30px;padding:25px 0 30px;border-top:1px solid rgba(255,255,255,.12)}.reveal-label{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.43);margin-bottom:7px}.reveal-date{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.045em}.reveal-right{text-align:right;font-size:11px;line-height:1.65;letter-spacing:.08em;color:rgba(255,255,255,.48);text-transform:uppercase}
+.footer{display:flex;justify-content:space-between;gap:20px;padding:20px 0 27px;border-top:1px solid rgba(255,255,255,.08);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+@media(max-width:800px){.wrap{width:min(100% - 34px,1180px)}.top{padding-top:24px}.main{grid-template-columns:1fr;gap:52px;padding:58px 0 46px}h1{font-size:clamp(56px,17vw,92px)}.lead{font-size:18px;margin-top:26px}.copy{max-width:620px}.reveal{align-items:flex-start;flex-direction:column}.reveal-right{text-align:left}.footer{flex-direction:column}.o1{right:-230px}.o2{right:-100px}}
+</style></head>
+<body><div class="page"><div class="pattern"></div><div class="lines"></div><div class="orbit o1"></div><div class="orbit o2"></div><div class="cross"></div>
+<div class="wrap">
+<header class="top"><div class="status"><span class="dot"></span>Transition in progress</div><div class="date">25.09.2026</div></header>
+<main class="main">
+<section><div class="kicker">A new chapter is taking shape</div><h1>THE NEXT<br>CHAPTER <span>IS TAKING SHAPE.</span></h1><p class="lead">Một chương đã khép lại.<br>Một hành trình mới đang được xây dựng.</p></section>
+<section class="copy"><p>Sau ngày <strong style="color:#fff">25.09.2026</strong>, hệ thống đang bước vào giai đoạn chuyển giao và tái cấu trúc. Những nền tảng cần thiết đang được hoàn thiện trước khi chương tiếp theo chính thức bắt đầu.</p>
+<div class="values"><div class="value">Đội ngũ mới.</div><div class="value">Cấu trúc mới.</div><div class="value">Những tiêu chuẩn mới.</div><div class="value">Một định hướng mới.</div></div>
+<p class="quote">Không phải mọi thứ đều được mang theo.<br>Nhưng những giá trị xứng đáng sẽ tiếp tục.</p></section>
 </main>
-<div class="legacy-modal" id="legacyNotice" role="dialog" aria-modal="true" aria-labelledby="legacyNoticeTitle">
-  <div class="legacy-modal-card">
-    <div class="legacy-modal-kicker">Official Club Notice</div>
-    <h2 id="legacyNoticeTitle">ROSE FC — THE FINAL CHAPTER</h2>
-    <div class="legacy-modal-period">08.03.2025 — 25.09.2026</div>
-    <div class="legacy-modal-effective">Hiệu lực từ 00:00 · 25/09/2026 (UTC+7)</div>
-    <p>Rose FC đã khép lại một chặng đường. Đây không phải là sự giải thể — một quá trình chuyển giao và kế thừa đang được thực hiện để chuẩn bị cho chương tiếp theo.</p>
-    <div class="legacy-modal-actions">
-      <button class="legacy-modal-btn primary" id="legacyReadMore" type="button">ĐỌC THÔNG BÁO</button>
-      <button class="legacy-modal-btn secondary" id="legacyClose" type="button">TIẾP TỤC</button>
-    </div>
-  </div>
-</div>
-
-<footer class="footer"><div class="container">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand"><img src="rose-fc-logo.png" alt="Rose FC"><strong>ROSE FC</strong></div>
-      <p style="color:#aaa;max-width:390px">Rose Football Club · 08.03.2025 — 25.09.2026<br>The Final Chapter · Transition in progress.</p>
-    </div>
-    <div><h4>Lưu trữ</h4><a href="news.html">Newsroom</a><a href="media.html">Media</a></div>
-    <div><h4>Trạng thái</h4><span style="color:#aaa;display:block;line-height:1.8">Transition Mode<br>The Next Chapter Is Coming.</span></div>
-    <div><h4>Liên hệ</h4><a href="mailto:rosefootballclub2025@gmail.com">rosefootballclub2025@gmail.com</a><a href="tel:0792201033">Zalo: 0792201033</a><a href="#">Instagram: @roseball_vn</a></div>
-  </div>
-  <div class="footer-bottom"><span>© 2026 Rose Football Club. Legacy archive.</span><span>Powered by Roseball</span></div>
-</div></footer><script src="main.js"></script>
-<script>
-(function(){
-  const modal = document.getElementById('legacyNotice');
-  const closeBtn = document.getElementById('legacyClose');
-  const readBtn = document.getElementById('legacyReadMore');
-  if(!modal) return;
-  document.body.classList.add('legacy-modal-open');
-  function closeNotice(){
-    modal.hidden = true;
-    document.body.classList.remove('legacy-modal-open');
-  }
-  closeBtn && closeBtn.addEventListener('click', closeNotice);
-  readBtn && readBtn.addEventListener('click', function(){
-    closeNotice();
-    const target = document.getElementById('rose-final-chapter');
-    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
-  });
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) closeNotice();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && !modal.hidden) closeNotice();
-  });
-})();
-</script>
-</body></html>
+<section class="reveal"><div><div class="reveal-label">The next chapter · Expected reveal</div><div class="reveal-date">01.10.2026</div></div><div class="reveal-right">Tên gọi và nhận diện mới<br>dự kiến được công bố vào ngày 01.10.2026.<br><strong style="color:#fff">Until then, we build.</strong></div></section>
+<footer class="footer"><span>08.03.2025 — 25.09.2026 · Thank you, Rose.</span><span>System status · Transition</span></footer>
+</div></div></body></html>
